@@ -61,9 +61,10 @@ The aim of the colour scheme is to provide a professional and calming user exper
 5. Ash Gray (#CDD1C4)
 
 <details>
-    <summary>Click to see Colour Palette</summary>
-    ![Colour Palette](readmecontent/images/colors.png)
+  <summary>Click to see Colour Palette</summary>
+  <img src="readmecontent/images/colors.png" alt="Colour Palette">
 </details>
+
 
 ### Typography
 
