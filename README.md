@@ -1,6 +1,6 @@
 # Portfolio Client
 
-Portfolio Client is a responsive web application built with Vite and React to showcase portfolio work. 
+Portfolio Client is a responsive web application built with Vite and React to showcase portfolio work.
 
 The objective of this site is to provide an engaging and user-friendly interface to contact me.
 
@@ -10,66 +10,64 @@ The Deployed Site is available [HERE]()
 
 ## Table of Contents
 
-- [UX](#ux)
-  - [Current User Goals](#current-user-goals)
-  - [New User Goals](#new-user-goals)
-  - [Agile Planning](#agile-planning)
+- [Project Goals](#project-goals)
+- [User Goals](#user-goals)
+- [Agile Planning](#agile-planning)
 - [Design](#design)
+  - [Mockups](#mockups)
   - [Colour](#colour)
   - [Typography](#typography)
   - [Layout](#layout)
 - [Features](#features)
 - [Testing](#testing)
-  - [HTML Validation](#html-validation)
-  - [CSS Validation](#css-validation)
-  - [ESLint Validation](#eslint-validation)
-  - [Lighthouse Testing](#lighthouse-testing)
-  - [Manual Tests](#manual-tests)
 - [Technologies Used](#technologies-used)
-  - [Languages Used](#languages-used)
-  - [Libraries and Frameworks Used](#libraries-and-frameworks-used)
 - [Deployment](#deployment)
 - [Credits](#credits)
-  - [Media](#media)
-  - [Code](#code)
 
-## UX
-
-### Current User Goals
+## Project Goals
 
 - Seamlessly manage and display portfolio items.
 - Utilize a responsive design to ensure accessibility across devices.
 - Interact with a clean and user-friendly interface.
 
-### New User Goals
+## User Goals
 
 - Quickly understand and navigate the platform.
 - Easily add and manage portfolio items.
 
-### Agile Planning
+## Agile Planning
 
 - Development followed an agile approach, with iterative cycles to ensure the application meets user needs.
 - User stories and tasks were managed on a Kanban board.
 
 ## Design
 
+### Mockups
+
+<details>
+    <summary>Click to see Mockups</summary>
+
+</details>
+
+
 ### Colour
 
 The aim of the colour scheme is to provide a professional and calming user experience.
 
-1. YInMn Blue (#355070)
-2. Chinese Violet (#6D597A)
-3. Thulian Pink (#B56576)
-4. Powder Blue (#A0AEC1)
-5. Light Coral (#E56B6F)
+1. Jet (#30323D)
+2. Davy's Gray (#4D5061)
+3. Glaucous (#5C80BC)
+4. Saffron (#E8C547)
+5. Ash Gray (#CDD1C4)
 
 <details>
     <summary>Click to see Colour Palette</summary>
+    ![Colour Palette](readmecontent/images/colors.png)
 </details>
 
 ### Typography
 
-The main typography used is `Montserrat`, chosen for its readability and clean aesthetics DM Serif Display for it's more curved style.
+The main typography used is `Montserrat`, chosen for its readability and clean aesthetics, and `DM Serif Display` for its more curved style.
 
 ### Layout
 
@@ -79,36 +77,15 @@ The layout aims to provide easy navigation and distinguish between different sec
 
 <details>
   <summary>Click to view Features </summary>
+  <ul>
+    <li>Responsive grid layout for portfolio items.</li>
+    <li>Detailed view for each portfolio item.</li>
+    <li>Add/Edit portfolio items functionality.</li>
+    <li>Advanced filtering and search (future feature).</li>
+    <li>Integration with social media (future feature).</li>
+    <li>Analytics and visitor tracking (future feature).</li>
+  </ul>
 </details>
-
-
-Users can view their portfolio items in a responsive grid layout.
-
-<details>
-  <summary>Click to view Portfolio Display </summary>
-</details>
-
-#### Detailed View of Portfolio Item
-
-Users can click on a portfolio item to view its detailed description and related information about each project in the list.
-
-<details>
-  <summary>Click to view Detailed Portfolio Item </summary>
-</details>
-
-
-
-
-
-<details>
-  <summary>Click to view Add/Edit Portfolio Item </summary>
-</details>
-
-### Future Features
-
-- Advanced filtering and search.
-- Integration with social media.
-- Analytics and visitor tracking.
 
 ## Testing
 
@@ -151,14 +128,13 @@ Users can click on a portfolio item to view its detailed description and related
 - Vite
 - React Router
 - Axios
-- Bootstrap (for grid layout, although custom CSS is preferred)
+- Bootstrap
 
 ## Deployment
 
+- Docker for containerized deployment.
+- CI/CD pipeline setup for automated deployments.
 
 ## Credits
 
-
-
-
-
+- Various code snippets and inspirations from open-source projects and tutorials.
