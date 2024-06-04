@@ -1,0 +1,35 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .header {
+    background-color: var(--color-jet);
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .navLink {
+    margin: 0 1rem;
+    color: var(--color-text-light);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .navLink:hover {
+    color: var(--color-saffron);
+  }
+  
+  .mainContent {
+    flex: 1;
+    padding: 2rem;
+  }
+  
+  .footer {
+    background-color: var(--color-jet);
+    color: var(--color-text-light);
+    text-align: center;
+    padding: 1rem;
+  }
+  

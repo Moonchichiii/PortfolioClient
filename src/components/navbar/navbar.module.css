@@ -36,6 +36,9 @@
   transform: translateX(0);
   transition: transform 0.3s ease;
   z-index: 1050;
+  margin-left: auto;
+  margin-right: auto;
+  
 }
 
 .navbarLinks {
@@ -97,6 +100,7 @@
   justify-content: center;
   gap: 10px;
   transition-duration: 0.3s;
+  
 }
 
 .bars {
@@ -118,6 +122,7 @@
 .checkbox:checked + .toggle .bars {
   position: absolute;
   transition-duration: 0.3s;
+  
 }
 
 .checkbox:checked + .toggle #bar2 {
@@ -129,6 +134,7 @@
   width: 100%;
   transform: rotate(45deg);
   transition-duration: 0.3s;
+  
 }
 
 .checkbox:checked + .toggle #bar3 {
@@ -140,6 +146,7 @@
 .checkbox:checked + .toggle {
   transition-duration: 0.3s;
   transform: rotate(180deg);
+  z-index: 1100;
 }
 
 @media (max-width: 1024px) {

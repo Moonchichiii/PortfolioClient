@@ -23,7 +23,7 @@ function NavBar() {
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
-  };
+  };z
 
   const handleLogout = (event) => {
     event.preventDefault();
