@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;600&display=swap');
+
+
+
+:root {
+
+  --color-jet: #30323D;
+  --color-gray: #4D5061;
+  --color-glaucous: #5C80BC;
+
+  --color-saffron: #E8C547;
+
+  --color-ash: #CDD1C4;
+
+  --color-coral: #E56B6F;
+
+  --color-pink: #B56576;
+  
+  --color-background: #FFFFFF;
+
+  --color-text-dark: #333333;
+  
+  --color-text-light: #FFFFFF;
+}
+
+/* Global reset */
+*::before,
+*::after,
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}

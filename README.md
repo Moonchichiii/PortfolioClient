@@ -130,7 +130,6 @@ The layout aims to provide easy navigation and distinguish between different sec
 - React Router
 - Axios
 - Bootstrap
-- Sass
 - React Redux
 
 

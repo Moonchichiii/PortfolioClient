@@ -1,0 +1,255 @@
+
+
+/* Variables */
+:root {
+  --color-jet: #30323D;
+  --color-gray: #4D5061;
+  --color-glaucous: #5C80BC;
+  --color-saffron: #E8C547;
+  --color-ash: #CDD1C4;
+  --color-coral: #E56B6F;
+  --color-pink: #B56576;
+  --color-background: #FFFFFF;
+  --color-text-dark: #333333;
+  --color-text-light: #FFFFFF;
+}
+
+/* General Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-background);
+  font-family: 'Montserrat', sans-serif;
+  color: var(--color-text-dark);
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--color-gray);
+  color: var(--color-text-light);
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar nav a {
+  color: var(--color-text-light);
+  margin-right: 1rem;
+}
+
+.navbar nav a:hover {
+  color: var(--color-saffron);
+}
+
+.navbar .auth-buttons {
+  background-color: var(--color-glaucous);
+  color: var(--color-text-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .auth-buttons:hover,
+.navbar .auth-buttons:focus {
+  background-color: var(--color-coral);
+  transform: translateY(-2px);
+}
+
+.navbar .auth-buttons:active {
+  transform: translateY(0);
+}
+
+.navbar .navbar-toggler {
+  cursor: pointer;
+  color: var(--color-glaucous);
+  font-size: 1.8rem;
+  margin-right: 10px;
+}
+
+.navbar .navbar-toggler.icon-open {
+  color: var(--color-coral);
+}
+
+.navbar .navbar-toggler.icon-close {
+  color: var(--color-glaucous);
+}
+
+.navbar .navbar-links {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: var(--color-ash);
+  z-index: 1050;
+  transition: color 0.3s ease, transform 0.3s ease;
+  transform: translateY(-100%);
+}
+
+.navbar .navbar-links.open {
+  transform: translateY(0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar .navbar-links a {
+  color: var(--color-gray);
+  font-size: 1.5rem;
+  padding: 1rem;
+  text-decoration: none;
+  display: block;
+}
+
+.navbar .navbar-links a:hover {
+  color: var(--color-saffron);
+}
+
+.navbar .profile-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .navbar .navbar-brand {
+    font-size: 2.5rem;
+  }
+
+  .navbar .navbar-links a {
+    font-size: 2rem;
+  }
+
+  .navbar .navbar-toggler.icon-open {
+    color: var(--color-coral);
+    z-index: 1060;
+  }
+
+  .navbar .navbar-toggler {
+    display: block;
+    z-index: 1060;
+  }
+
+  .navbar .navbar-links {
+    display: none;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  .navbar .profile-section {
+    display: none;
+  }
+
+  .navbar .offcanvas-profile {
+    display: block;
+    font-size: 1.35rem;
+    color: var(--color-gray);
+  }
+
+  .navbar .offcanvas-profile img:hover {
+    cursor: pointer;
+  }
+
+  .navbar span {
+    margin-left: 0.7rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .navbar .navbar-brand {
+    font-size: 2.8rem;
+    margin-left: 1.5rem;
+  }
+
+  .navbar .navbar-links a {
+    font-size: 1.8rem;
+    padding: 0.8rem;
+  }
+
+  .navbar .navbar-toggler.icon-open {
+    color: var(--color-coral);
+    z-index: 1060;
+  }
+
+  .navbar .navbar-toggler {
+    display: block;
+    z-index: 1060;
+  }
+
+  .navbar .navbar-links {
+    display: none;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  .navbar .profile-section {
+    display: none;
+  }
+
+  .navbar .offcanvas-profile {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--color-gray);
+  }
+
+  .navbar .offcanvas-profile img:hover {
+    cursor: pointer;
+  }
+
+  .navbar span {
+    margin-left: 0.6rem;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .navbar .navbar-brand {
+    font-size: 2.8rem;
+    margin-left: 1.5rem;
+  }
+
+  .navbar .navbar-links a {
+    font-size: 1.8rem;
+    padding: 0.8rem;
+  }
+
+  .navbar .navbar-toggler.icon-open {
+    color: var(--color-coral);
+    z-index: 1060;
+  }
+
+  .navbar .navbar-toggler {
+    display: block;
+    font-size: 1.35rem;
+  }
+}
