@@ -1,8 +1,32 @@
-.auth-switch {
+.authButton {
+  background-color: var(--color-glaucous);
+  color: var(--color-text-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  border: none;
+  padding: 0.55rem 1rem;
+  margin-left: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.authButton:hover,
+.authButton:focus {
+  background-color: var(--color-coral);
+  transform: translateY(-2px);
+}
+
+.authButton:active {
+  transform: translateY(0);
+}
+
+.authSwitch {
   text-align: center;
 }
 
-.auth-switch button {
+.authSwitch button {
   background: none;
   border: none;
   padding: 0;
@@ -11,7 +35,7 @@
   cursor: pointer;
 }
 
-.auth-switch button:hover {
+.authSwitch button:hover {
   color: var(--color-saffron);
   text-decoration: underline;
 }

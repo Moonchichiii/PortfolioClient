@@ -1,17 +1,21 @@
 import React from 'react';
-import '../../css/pages/landingpage.module.css';
+import { useNavigate } from 'react-router-dom';
+import styles from './landingpage.module.css';
 
-const LandingPage = () => {
-  const scrollToAbout = () => {
-    document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
+const LandingPage = ({ onScrollToHome }) => {
+  const navigate = useNavigate();
+
+  const scrollToHome = () => {
+    navigate('/home');
+    onScrollToHome();
   };
 
   return (
-    <div className="landing-page">
-      <div className="hero">
+    <div className={styles.landingPage}>
+      <div className={styles.hero}>
         <h1>Welcome to My Portfolio</h1>
         <p>Showcasing My Work</p>
-        <div className="scroll-indicator" onClick={scrollToAbout}>▼</div>
+        <div className={styles.scrollIndicator} onClick={scrollToHome}>▼</div>
       </div>
     </div>
   );

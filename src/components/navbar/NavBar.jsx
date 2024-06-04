@@ -2,24 +2,22 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBars,
-  faTimes,
   faHome,
   faUser,
   faBriefcase,
   faEnvelope,
-  faSignInAlt,
-  faUserPlus,
-  faSignOutAlt
+  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import useAuth from "../../hooks/useAuth";
 import { useCurrentUser } from "../../context/CurrentUserContext";
 import LoadingSpinner from "../loadingspinner/LoadingSpinner";
 import AuthModal from "../authmodal/AuthModal";
-import "../css/components/navbar.module.css";
+import styles from "./navbar.module.css";
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [modalShow, setModalShow] = useState(false);
+  const [authType, setAuthType] = useState('login');
   const { currentUser, isLoading } = useCurrentUser();
   const { logout } = useAuth();
 
@@ -39,44 +37,51 @@ function NavBar() {
     }
   };
 
+  const handleAuthClick = (type) => {
+    setAuthType(type);
+    setModalShow(true);
+  };
+
   if (isLoading) {
     return <LoadingSpinner />;
   }
 
   return (
-    <header className="navbar">
-      <nav>
-        <NavLink to="/" onClick={closeOffCanvas}>
-          <FontAwesomeIcon icon={faHome} /> Home
-        </NavLink>
-        <NavLink to="#about-section" onClick={closeOffCanvas}>
+    <header className={styles.navbar}>
+      <nav className={isOpen ? styles.navbarLinksOpen : styles.navbarLinks} onClick={closeOffCanvas}>
+        <a href="#about-section" className={styles.navLink}>
           <FontAwesomeIcon icon={faUser} /> About
-        </NavLink>
-        <NavLink to="#portfolio" onClick={closeOffCanvas}>
+        </a>
+        <NavLink to="/portfolio" className={styles.navLink}>
           <FontAwesomeIcon icon={faBriefcase} /> Portfolio
         </NavLink>
-        <NavLink to="#contact" onClick={closeOffCanvas}>
+        <a href="#contact" className={styles.navLink}>
           <FontAwesomeIcon icon={faEnvelope} /> Contact
-        </NavLink>
+        </a>
       </nav>
-      <div>
+      <div className={styles.authSection}>
         {currentUser ? (
-          <button className="auth-buttons" onClick={handleLogout}>
+          <button className={styles.authButtons} onClick={handleLogout}>
             <FontAwesomeIcon icon={faSignOutAlt} /> Logout
           </button>
         ) : (
           <>
-            <AuthModal initialType="login" />
-            <AuthModal initialType="register" />
+            <button className={styles.authButtons} onClick={() => handleAuthClick('login')}>
+              Sign In
+            </button>
+            <button className={styles.authButtons} onClick={() => handleAuthClick('register')}>
+              Sign Up
+            </button>
           </>
         )}
       </div>
-      <div className="navbar-toggler" onClick={toggleMenu}>
-        <FontAwesomeIcon
-          icon={isOpen ? faTimes : faBars}
-          className={isOpen ? "icon-open" : "icon-close"}
-        />
-      </div>
+      <input type="checkbox" id="checkbox" className={styles.checkbox} onChange={toggleMenu} />
+      <label htmlFor="checkbox" className={styles.toggle}>
+        <div className={styles.bars} id={styles.bar1}></div>
+        <div className={styles.bars} id={styles.bar2}></div>
+        <div className={styles.bars} id={styles.bar3}></div>
+      </label>
+      <AuthModal show={modalShow} handleClose={() => setModalShow(false)} initialType={authType} />
     </header>
   );
 }
