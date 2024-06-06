@@ -1,62 +1,78 @@
 import React, { useState } from 'react';
-import useAuth from '../hooks/useAuth';
+import { Form, Button, Alert } from 'react-bootstrap';
+import useAuth from '../../hooks/useAuth';
 
-const RegisterForm = () => {
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password1, setPassword1] = useState('');
-    const [password2, setPassword2] = useState('');
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const { register, error } = useAuth();
+const RegistrationForm = ({ onAuthSuccess }) => {
+  const { register, error } = useAuth();
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    password1: '',
+    password2: '',
+  });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        register({ username, email, password1, password2, first_name: firstName, last_name: lastName });
-    };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                placeholder="Username"
-            />
-            <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="Email"
-            />
-            <input
-                type="password"
-                value={password1}
-                onChange={(e) => setPassword1(e.target.value)}
-                placeholder="Password"
-            />
-            <input
-                type="password"
-                value={password2}
-                onChange={(e) => setPassword2(e.target.value)}
-                placeholder="Confirm Password"
-            />
-            <input
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                placeholder="First Name"
-            />
-            <input
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                placeholder="Last Name"
-            />
-            {error && <div>{error}</div>}
-            <button type="submit">Register</button>
-        </form>
-    );
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await register(formData);
+    onAuthSuccess();
+  };
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      {error && <Alert variant="danger">{error}</Alert>}
+      <Form.Group controlId="formUsername">
+        <Form.Label>Username</Form.Label>
+        <Form.Control
+          type="text"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}
+          isInvalid={!!error}
+        />
+      </Form.Group>
+      <Form.Group controlId="formEmail">
+        <Form.Label>Email</Form.Label>
+        <Form.Control
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          isInvalid={!!error}
+        />
+      </Form.Group>
+      <Form.Group controlId="formPassword1">
+        <Form.Label>Password</Form.Label>
+        <Form.Control
+          type="password"
+          name="password1"
+          value={formData.password1}
+          onChange={handleChange}
+          isInvalid={!!error}
+        />
+      </Form.Group>
+      <Form.Group controlId="formPassword2">
+        <Form.Label>Confirm Password</Form.Label>
+        <Form.Control
+          type="password"
+          name="password2"
+          value={formData.password2}
+          onChange={handleChange}
+          isInvalid={!!error}
+        />
+      </Form.Group>
+      <Button variant="primary" type="submit">
+        Sign Up
+      </Button>
+    </Form>
+  );
 };
 
-export default RegisterForm;
+export default RegistrationForm;

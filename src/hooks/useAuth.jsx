@@ -2,44 +2,57 @@ import { useDispatch } from 'react-redux';
 import { setUser, clearUser } from '../pages/auth/authSlice';
 import { axiosInstance } from '../api/ApiConfig';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const useAuth = () => {
-    const dispatch = useDispatch();
-    const [error, setError] = useState(null);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
-    const login = async (email, password) => {
-        try {
-            const response = await axiosInstance.post('/api/auth/login/', { email, password });
-            dispatch(setUser(response.data.user));
-        } catch (err) {
-            setError(err.response.data);
-        }
-    };
+  const login = async (identifier, password) => {
+    try {
+      const response = await axiosInstance.post('auth/login/', { username: identifier, password });
+      const { user, access_token } = response.data;
+      dispatch(setUser(user));
+      setError(null);
+      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
+      return true;
+    } catch (err) {
+      setError(err.response?.data || 'Login failed');
+      return false;
+    }
+  };
 
-    const register = async (userData) => {
-        try {
-            const response = await axiosInstance.post('/api/auth/register/', userData);
-            dispatch(setUser(response.data.user));
-        } catch (err) {
-            setError(err.response.data);
-        }
-    };
+  const register = async (userData) => {
+    try {
+      const response = await axiosInstance.post('auth/register/', userData);
+      const { user, access_token } = response.data;
+      dispatch(setUser(user));
+      setError(null);
+      axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
+      return true;
+    } catch (err) {
+      setError(err.response?.data || 'Registration failed');
+      return false;
+    }
+  };
 
-    const logout = async () => {
-        try {
-            await axiosInstance.post('/api/auth/logout/');
-            dispatch(clearUser());
-        } catch (err) {
-            console.error(err);
-        }
-    };
+  const logout = async () => {
+    try {
+      await axiosInstance.post('auth/logout/');
+      dispatch(clearUser());
+      navigate('/');
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
-    return {
-        login,
-        register,
-        logout,
-        error
-    };
+  return {
+    login,
+    register,
+    logout,
+    error,
+  };
 };
 
 export default useAuth;

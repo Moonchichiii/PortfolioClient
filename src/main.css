@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;600&display=swap');
+
+:root {
+  --color-saffron: #f4c430;
+  --color-coral: #ff6f61;
+  --color-pink: #b56576;
+  --background-color: #ffffff;
+  --color-text-dark: #333333;
+  --color-text-light: #ffffff;
+  --contact-section: #cdd1c4;
+  --color-jet: #30323d;
+  --color-gray: #2e2e2e;
+  --color-ash: #383838;
+  --color-glaucous: #6082b6;
+}
+
+/* Global reset */
+*::before,
+*::after,
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: 'Montserrat', sans-serif;
+  color: var(--color-text-dark);
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Components */
+.container {
+  background-color: var(--color-ash);
+  color: var(--color-text-light);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.button-primary {
+  background-color: var(--color-saffron);
+  border: none;
+  color: var(--color-text-light);
+}
+
+.button-primary:hover {
+  background-color: var(--color-coral);
+}
+
+.form-control {
+  border: 1px solid var(--color-jet);
+  border-radius: 4px;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--color-gray);
+  color: var(--color-text-light);
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}

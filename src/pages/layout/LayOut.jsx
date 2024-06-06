@@ -1,23 +1,18 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import NavBar from '../../components/navbar/NavBar';
+import Footer from '../../components/footer/Footer';
 import styles from './LayOut.module.css';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, onAuthClick }) => {
   return (
     <div className={styles.layout}>
       <header className={styles.header}>
-        <nav>
-          <NavLink to="/" className={styles.navLink}>Home</NavLink>
-          <NavLink to="/projects" className={styles.navLink}>Projects</NavLink>
-          <NavLink to="/contact" className={styles.navLink}>Contact</NavLink>
-        </nav>
+        <NavBar onAuthClick={onAuthClick} />
       </header>
       <main className={styles.mainContent}>
         {children}
       </main>
-      <footer className={styles.footer}>
-        © 2024 My Portfolio
-      </footer>
+      <Footer />
     </div>
   );
 };

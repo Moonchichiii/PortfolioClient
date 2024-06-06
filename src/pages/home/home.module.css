@@ -1,13 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Montserrat:wght@400;600&display=swap');
-
 .home {
   padding: 2rem;
-  margin-top: auto;
+  margin-top: 4.5rem; 
   text-align: center;
   color: var(--color-text-light);
   background: linear-gradient(135deg, var(--color-saffron), var(--color-coral));
   animation: gradient 15s ease infinite;
-  height: 100vh;
+  min-height: calc(100vh - 8.5rem);
 }
 
 @keyframes gradient {
@@ -23,7 +21,6 @@
 }
 
 .title {
-  margin-top: 15rem; 
   font-family: 'DM Serif Display', serif;
   font-size: 3rem;
   margin-bottom: 1rem;

@@ -11,7 +11,7 @@ export const ProfileDataProvider = ({ children }) => {
     useEffect(() => {
         const fetchProfile = async () => {
             try {
-                const response = await axiosInstance.get('/api/profile/');
+                const response = await axiosInstance.get('profiles/');
                 setProfile(response.data);
             } catch (error) {
                 console.error('Error fetching profile:', error);
