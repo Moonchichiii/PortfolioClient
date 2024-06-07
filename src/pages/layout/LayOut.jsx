@@ -1,7 +1,8 @@
 import React from 'react';
 import NavBar from '../../components/navbar/NavBar';
 import Footer from '../../components/footer/Footer';
-import styles from './layout.module.css';
+
+import styles from './layout.module.css'
 
 function Layout({ children, onAuthClick }) {
   return (
