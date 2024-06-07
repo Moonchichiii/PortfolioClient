@@ -1,17 +1,39 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-import styles from './home.module.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import styles from "./Home.module.css";
 
-const Home = () => {
+function Home() {
   return (
     <div className={styles.home}>
-      <h1 className={styles.title}>Welcome to My Portfolio</h1>
-      <p className={styles.subtitle}>Showcasing my work and projects</p>
-      <NavLink to="/projects" className={styles.button}>
-        View Projects
-      </NavLink>
+      <div className="container">
+        <h1 className={styles.title}>Welcome to My Portfolio</h1>
+        <p className={styles.subtitle}>Showcasing my work and projects</p>
+        <NavLink to="/portfolio" className={`${styles.button} button-primary`}>
+          View Projects
+        </NavLink>
+        <section className={styles.introSection}>
+          <h2 className={styles.introTitle}>About Me</h2>
+          <p className={styles.introText}>
+            I am a passionate web developer specializing in creating beautiful
+            and functional websites. My journey in web development started with
+            a love for design and an enthusiasm for coding. I enjoy bringing
+            ideas to life on the web, creating seamless user experiences and
+            visually appealing designs.
+          </p>
+          <p className={styles.introText}>
+            With a unique combination of experience in both the culinary sector
+            and web development, I have recently redirected my career towards
+            frontend development. Through self-learning and practical
+            application, I have acquired substantial knowledge in HTML, CSS,
+            JavaScript, and an introduction to Python and Django for server-side
+            programming. My previous experience has taught me the importance of
+            attention to detail and independence, qualities that I now apply in
+            web development to create engaging and functional websites.
+          </p>
+        </section>
+      </div>
     </div>
   );
-};
+}
 
 export default Home;

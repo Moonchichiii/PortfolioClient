@@ -8,9 +8,9 @@
 }
 
 .navbar {
-  background-color: var(--color-gray);
+  background-color: var(--color-gray); 
   color: var(--color-text-light);
-  padding: 1.5rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -24,23 +24,31 @@
 .navbarLinks, .navbarLinksOpen {
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 .navbarLinksOpen {
   flex-direction: column;
   position: fixed;
-  top: 0;
+  top: 60px; 
   right: 0;
-  width: 50%;
-  height: 100%;
-  background-color: var(--color-ash);
-  transform: translateX(0);
+  width: 75%;
+  max-width: 300px;
+  height: calc(100% - 60px);
+  background-color: var(--color-gray);
+  transform: translateX(100%);
   transition: transform 0.3s ease;
   z-index: 1050;
+  padding-top: 2rem;
+}
+
+.navbarLinksOpen.show {
+  transform: translateX(0);
 }
 
 .navbarLinks {
   flex-direction: row;
+  flex-grow: 1;
 }
 
 .navLink {
@@ -65,8 +73,7 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   border: none;
-  padding: 0.75rem 1.5rem;
-  margin-left: 5px;
+  padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   border-radius: 12px;
@@ -83,69 +90,86 @@
   transform: translateY(0);
 }
 
-.checkbox {
-  display: none;
-}
-
-.toggle {
+.burger {
   position: relative;
   width: 40px;
-  height: 40px;
+  height: 30px;
+  background: transparent;
   cursor: pointer;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  gap: 10px;
-  transition-duration: 0.3s;
+  z-index: 1100;
+  margin-left: auto;
 }
 
-.bars {
-  width: 100%;
+.burger input {
+  display: none;
+}
+
+.burger span {
+  display: block;
+  position: relative;
   height: 4px;
-  background-color: var(--color-coral);
-  border-radius: 4px;
-}
-
-#bar2 {
-  transition-duration: 0.3s;
-}
-
-#bar1,
-#bar3 {
-  width: 70%;
-}
-
-.checkbox:checked + .toggle .bars {
-  position: absolute;
-  transition-duration: 0.3s;
-}
-
-.checkbox:checked + .toggle #bar2 {
-  transform: scaleX(0);
-  transition-duration: 0.3s;
-}
-
-.checkbox:checked + .toggle #bar1 {
   width: 100%;
+  background: var(--color-coral);
+  border-radius: 9px;
+  opacity: 1;
+  transform: rotate(0deg);
+  transition: all 0.25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+  transform-origin: left center;
+}
+
+.burger input:checked ~ span:nth-of-type(1) {
   transform: rotate(45deg);
-  transition-duration: 0.3s;
+  top: 0;
 }
 
-.checkbox:checked + .toggle #bar3 {
-  width: 100%;
+.burger input:checked ~ span:nth-of-type(2) {
+  width: 0;
+  opacity: 0;
+}
+
+.burger input:checked ~ span:nth-of-type(3) {
   transform: rotate(-45deg);
-  transition-duration: 0.3s;
+  top: 0;
 }
 
-.checkbox:checked + .toggle {
-  transition-duration: 0.3s;
-  transform: rotate(180deg);
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: var(--color-coral);
+  font-size: 2rem;
+  cursor: pointer;
   z-index: 1100;
 }
 
+.offcanvasAuth {
+  display: none;
+}
+
+.desktopAuth {
+  display: flex;
+  margin-left: auto;
+}
+
 @media (max-width: 1024px) {
-  .toggle {
+  .burger {
     display: flex;
   }
 
@@ -153,13 +177,25 @@
     display: none;
   }
 
-  .navbarLinksOpen {
+  .navbarLinksOpen.show {
     display: flex;
+    transform: translateX(0);
+  }
+
+  .offcanvasAuth {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 1rem 0;
+  }
+
+  .desktopAuth {
+    display: none;
   }
 }
 
 @media (min-width: 1025px) {
-  .toggle {
+  .burger {
     display: none;
   }
 
@@ -169,5 +205,13 @@
 
   .navbarLinksOpen {
     display: none;
+  }
+
+  .offcanvasAuth {
+    display: none;
+  }
+
+  .desktopAuth {
+    display: flex;
   }
 }

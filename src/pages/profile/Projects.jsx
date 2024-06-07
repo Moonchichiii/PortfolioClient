@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Table, Button, Container, Row, Col, Modal, Form } from 'react-bootstrap';
-import { axiosMultipart } from '../../api/ApiConfig';
+import React, { useState, useEffect } from "react";
+import { Table, Button, Container, Row, Col, Modal, Form, Alert } from "react-bootstrap";
+import { axiosInstance, axiosMultipart } from "../../api/ApiConfig";
 
-const Projects = () => {
+function Projects() {
   const [projects, setProjects] = useState([]);
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({
-    title: '',
-    description: '',
+    title: "",
+    description: "",
   });
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [generalError, setGeneralError] = useState("");
 
   const fetchProjects = async () => {
     try {
-      const response = await axiosInstance.get('/api/portfolio/');
+      const response = await axiosInstance.get("portfolio/");
       setProjects(response.data);
     } catch (error) {
-      console.error('Error fetching projects:', error);
+      console.error("Error fetching projects:", error);
     }
   };
 
@@ -36,12 +38,18 @@ const Projects = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFieldErrors({});
+    setGeneralError("");
     try {
-      const response = await axiosMultipart.post('/api/portfolio/', formData);
+      const response = await axiosMultipart.post("portfolio/", formData);
       setProjects((prevProjects) => [...prevProjects, response.data]);
       handleClose();
     } catch (error) {
-      console.error('Error adding project:', error);
+      if (error.response && error.response.data) {
+        setFieldErrors(error.response.data);
+      } else {
+        setGeneralError("An error occurred while adding the project.");
+      }
     }
   };
 
@@ -78,6 +86,7 @@ const Projects = () => {
         </Modal.Header>
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
+            {generalError && <Alert variant="danger">{generalError}</Alert>}
             <Form.Group controlId="formTitle">
               <Form.Label>Title</Form.Label>
               <Form.Control
@@ -85,7 +94,11 @@ const Projects = () => {
                 name="title"
                 value={formData.title}
                 onChange={handleChange}
+                isInvalid={!!fieldErrors.title}
               />
+              <Form.Control.Feedback type="invalid">
+                {fieldErrors.title}
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="formDescription">
               <Form.Label>Description</Form.Label>
@@ -95,7 +108,11 @@ const Projects = () => {
                 name="description"
                 value={formData.description}
                 onChange={handleChange}
+                isInvalid={!!fieldErrors.description}
               />
+              <Form.Control.Feedback type="invalid">
+                {fieldErrors.description}
+              </Form.Control.Feedback>
             </Form.Group>
             <Button variant="primary" type="submit">
               Save Changes
@@ -105,6 +122,6 @@ const Projects = () => {
       </Modal>
     </Container>
   );
-};
+}
 
 export default Projects;

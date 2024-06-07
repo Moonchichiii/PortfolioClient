@@ -1,6 +1,55 @@
 .portfolio {
-padding: 2rem;
+    padding: 2rem;
     margin-top: 4.5rem;
     text-align: center;
+    background: var(--color-ash);
+    color: var(--color-text-light);
     min-height: calc(100vh - 8.5rem);
-}
+  }
+  
+  .projectCard {
+    background: var(--color-gray);
+    color: var(--color-text-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+  
+  .projectCard h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .projectCard p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .projectCard a {
+    color: var(--color-saffron);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .projectCard a:hover {
+    color: var(--color-coral);
+    text-decoration: underline;
+  }
+  
+  .projectCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .calendar {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  

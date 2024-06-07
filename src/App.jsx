@@ -1,10 +1,10 @@
 import React, { Suspense, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
-import { CurrentUserProvider } from './context/CurrentUserContext';
 import LoadingSpinner from './components/loadingspinner/LoadingSpinner';
-import Layout from './pages/layout/LayOut';  
+import Layout from './pages/layout/LayOut';
 import AuthModal from './components/authmodal/AuthModal';
 import ProtectedRoute from './routes/ProtectedRoute';
+import ErrorBoundary from './components/Common/ErrorBoundary';
 
 const LandingPage = React.lazy(() => import('./pages/landingpage/LandingPage'));
 const Home = React.lazy(() => import('./pages/home/Home'));
@@ -33,27 +33,25 @@ const App = () => {
   };
 
   return (
-    <CurrentUserProvider>
-      <Router>
-        <Suspense fallback={<LoadingSpinner />}>
-          <Wrapper>
-            <Routes>
-              <Route path="/" element={<LandingPage />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/portfolio" element={<Portfolio />} />
-              <Route path="/dashboard/*" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-            </Routes>
-          </Wrapper>
-        </Suspense>
-        <AuthModal
-          initialType={authModalType}
-          show={showAuthModal}
-          handleClose={handleCloseAuthModal}
-        />
-      </Router>
-    </CurrentUserProvider>
+    <Router>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Wrapper>
+          <Routes>
+            <Route path="/" element={<ErrorBoundary><LandingPage /></ErrorBoundary>} />
+            <Route path="/home" element={<ErrorBoundary><Home /></ErrorBoundary>} />
+            <Route path="/about" element={<ErrorBoundary><About /></ErrorBoundary>} />
+            <Route path="/contact" element={<ErrorBoundary><Contact /></ErrorBoundary>} />
+            <Route path="/portfolio" element={<ErrorBoundary><Portfolio /></ErrorBoundary>} />
+            <Route path="/dashboard/*" element={<ProtectedRoute><ErrorBoundary><Dashboard /></ErrorBoundary></ProtectedRoute>} />
+          </Routes>
+        </Wrapper>
+      </Suspense>
+      <AuthModal
+        initialType={authModalType}
+        show={showAuthModal}
+        handleClose={handleCloseAuthModal}
+      />
+    </Router>
   );
 };
 

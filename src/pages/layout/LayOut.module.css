@@ -20,19 +20,8 @@
   box-sizing: border-box;
 }
 
-.Modal {
-  position: fixed;
-  top:0;
-  left:0;
-  width: 100%;
-  height: auto;
-  background-color: black;
-  color: white;
-  z-index: 1300;
-}
-
 .footer {
-  background-color: var(--color-gray);
+  background: var(--color-jet);
   color: var(--color-text-light);
   text-align: center;
   padding: 1rem;

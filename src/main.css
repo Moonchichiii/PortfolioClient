@@ -46,16 +46,20 @@ body {
 
 /* Components */
 .container {
-  background-color: var(--color-ash);
-  color: var(--color-text-light);
-  padding: 20px;
-  border-radius: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
 }
 
 .button-primary {
   background-color: var(--color-saffron);
   border: none;
   color: var(--color-text-light);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .button-primary:hover {
@@ -65,14 +69,42 @@ body {
 .form-control {
   border: 1px solid var(--color-jet);
   border-radius: 4px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
 }
 
-/* Footer */
-.footer {
-  background-color: var(--color-gray);
-  color: var(--color-text-light);
-  text-align: center;
-  padding: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+/* Grid system */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.col {
+  flex: 1;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+@media (min-width: 576px) {
+  .col-sm {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 768px) {
+  .col-md {
+    flex: 0 0 33.33333%;
+    max-width: 33.33333%;
+  }
+}
+
+@media (min-width: 992px) {
+  .col-lg {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
 }

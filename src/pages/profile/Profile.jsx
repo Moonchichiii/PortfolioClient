@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import { axiosMultipart } from '../../api/ApiConfig';
 import { setUser } from '../../pages/auth/authSlice';
 
@@ -12,6 +12,8 @@ const Profile = () => {
     location: '',
     avatar: null,
   });
+  const [fieldErrors, setFieldErrors] = useState({});
+  const [generalError, setGeneralError] = useState("");
 
   useEffect(() => {
     if (user) {
@@ -34,6 +36,8 @@ const Profile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFieldErrors({});
+    setGeneralError("");
     const form = new FormData();
     form.append('bio', formData.bio);
     form.append('location', formData.location);
@@ -41,12 +45,14 @@ const Profile = () => {
       form.append('avatar', formData.avatar);
     }
     try {
-      const response = await axiosMultipart.put('/profiles/', form);
+      const response = await axiosMultipart.put('profiles/', form);
       dispatch(setUser(response.data));
     } catch (error) {
-      const errorMessage = error.response?.data?.detail || 'Error updating profile';
-      console.error('Error updating profile:', errorMessage);
-      alert(errorMessage);
+      if (error.response && error.response.data) {
+        setFieldErrors(error.response.data);
+      } else {
+        setGeneralError("An error occurred while updating the profile.");
+      }
     }
   };
 
@@ -56,6 +62,7 @@ const Profile = () => {
         <Col>
           <h2>Profile</h2>
           <Form onSubmit={handleSubmit}>
+            {generalError && <Alert variant="danger">{generalError}</Alert>}
             <Form.Group controlId="formBio">
               <Form.Label>Bio</Form.Label>
               <Form.Control
@@ -64,7 +71,11 @@ const Profile = () => {
                 name="bio"
                 value={formData.bio}
                 onChange={handleChange}
+                isInvalid={!!fieldErrors.bio}
               />
+              <Form.Control.Feedback type="invalid">
+                {fieldErrors.bio}
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="formLocation">
               <Form.Label>Location</Form.Label>
@@ -74,7 +85,11 @@ const Profile = () => {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
+                isInvalid={!!fieldErrors.location}
               />
+              <Form.Control.Feedback type="invalid">
+                {fieldErrors.location}
+              </Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="formAvatar">
               <Form.Label>Profile Image</Form.Label>
@@ -82,7 +97,11 @@ const Profile = () => {
                 type="file"
                 name="avatar"
                 onChange={handleFileChange}
+                isInvalid={!!fieldErrors.avatar}
               />
+              <Form.Control.Feedback type="invalid">
+                {fieldErrors.avatar}
+              </Form.Control.Feedback>
             </Form.Group>
             <Button variant="primary" type="submit">
               Save Changes
