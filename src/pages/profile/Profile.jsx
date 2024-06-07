@@ -58,7 +58,7 @@ function Profile() {
   };
 
   return (
-    <Container>
+    <Container className={styles.profile}>
       <Row>
         <Col>
           <h2>Profile</h2>

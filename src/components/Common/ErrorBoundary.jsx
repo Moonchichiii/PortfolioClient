@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from 'react-bootstrap';
+import PropTypes from 'prop-types';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -12,16 +12,34 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error('ErrorBoundary caught an error', error, errorInfo);
+    // You can handle error logging or reporting here if needed
+    console.error(error, errorInfo);
   }
+
+  handleRetry = () => {
+    this.setState({ hasError: false, errorMessage: '' });
+  };
 
   render() {
-    if (this.state.hasError) {
-      return <Alert variant="danger">{this.state.errorMessage}</Alert>;
+    const { hasError, errorMessage } = this.state;
+    const { children } = this.props;
+
+    if (hasError) {
+      return (
+        <div>
+          <h1>Something went wrong.</h1>
+          <p>{errorMessage}</p>
+          <button type="button" onClick={this.handleRetry}>Retry</button>
+        </div>
+      );
     }
 
-    return this.props.children;
+    return children;
   }
 }
+
+ErrorBoundary.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default ErrorBoundary;

@@ -30,7 +30,8 @@ function NavBar({ onAuthClick }) {
 
   useEffect(() => {
     setIsOpen(false);
-    document.getElementById('burger').checked = false;
+    const burger = document.getElementById('burger');
+    if (burger) burger.checked = false;
   }, [location]);
 
   return (
@@ -66,6 +67,7 @@ function NavBar({ onAuthClick }) {
             </button>
           ) : (
             <button
+              type="button"
               className={styles.authButtons}
               onClick={() => onAuthClick('login')}
             >
@@ -86,6 +88,7 @@ function NavBar({ onAuthClick }) {
           </button>
         ) : (
           <button
+            type="button"
             className={styles.authButtons}
             onClick={() => onAuthClick('login')}
           >

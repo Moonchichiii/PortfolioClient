@@ -1,9 +1,9 @@
 import React, { Suspense, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
+import { axiosInstance } from '../../api/ApiConfig';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
 import Chat from '../../components/chat/Chat';
-import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import { useCurrentUser } from '../../context/CurrentUserContext';
 
@@ -13,14 +13,14 @@ const Profile = React.lazy(() => import('../profile/Profile'));
 const Projects = React.lazy(() => import('../profile/Projects'));
 const Settings = React.lazy(() => import('../profile/Settings'));
 
-const Welcome = () => {
+function Welcome() {
   const { user } = useSelector((state) => state.auth);
   const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
     const fetchOnlineUsers = async () => {
       try {
-        const response = await axios.get('/api/profiles/online/');
+        const response = await axiosInstance.get('/api/profiles/online/');
         if (Array.isArray(response.data)) {
           setOnlineUsers(response.data);
         } else {
@@ -47,16 +47,16 @@ const Welcome = () => {
         <h4>Online Users</h4>
         <ul>
           {Array.isArray(onlineUsers) &&
-            onlineUsers.map((user, index) => (
-              <li key={index}>{user.username}</li>
+            onlineUsers.map((onlineUser) => (
+              <li key={onlineUser.id}>{onlineUser.username}</li>
             ))}
         </ul>
       </div>
     </div>
   );
-};
+}
 
-const Dashboard = () => {
+function Dashboard() {
   const { user } = useSelector((state) => state.auth);
   const { logout } = useAuth();
   const { profile } = useCurrentUser();
@@ -97,6 +97,6 @@ const Dashboard = () => {
       </main>
     </div>
   );
-};
+}
 
 export default Dashboard;

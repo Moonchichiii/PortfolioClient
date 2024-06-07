@@ -55,7 +55,7 @@ function AuthModal({ initialType = 'login', show, handleClose }) {
           <div className={`${styles.authSwitch} mt-3`}>
             {formType === 'login' ? (
               <span>
-                Don't have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <Button
                   variant="link"
                   onClick={switchForm}
@@ -66,7 +66,7 @@ function AuthModal({ initialType = 'login', show, handleClose }) {
               </span>
             ) : (
               <span>
-                Already have an account?{' '}
+                Don&apos;t have an account?{' '}
                 <Button
                   variant="link"
                   onClick={switchForm}

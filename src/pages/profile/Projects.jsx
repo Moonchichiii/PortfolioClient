@@ -10,8 +10,7 @@ import {
   Alert,
 } from 'react-bootstrap';
 import { axiosInstance, axiosMultipart } from '../../api/ApiConfig';
-
-import styles from './projects.module.css';
+import styles from './profile.module.css';
 
 function Projects() {
   const [projects, setProjects] = useState([]);
@@ -65,7 +64,7 @@ function Projects() {
   };
 
   return (
-    <Container>
+    <Container className={styles.projects}>
       <Row>
         <Col>
           <h2>Projects</h2>

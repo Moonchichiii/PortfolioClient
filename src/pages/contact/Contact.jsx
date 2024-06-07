@@ -18,6 +18,7 @@ function Contact() {
                   id="formName"
                   className="form-control"
                   placeholder="Your Name"
+                  name="name"
                 />
               </div>
               <div className="form-group">
@@ -27,6 +28,7 @@ function Contact() {
                   id="formEmail"
                   className="form-control"
                   placeholder="Your Email"
+                  name="email"
                 />
               </div>
               <div className="form-group">
@@ -36,6 +38,7 @@ function Contact() {
                   className="form-control"
                   rows="5"
                   placeholder="Your Message"
+                  name="message"
                 />
               </div>
               <button type="submit" className="btn btn-primary">

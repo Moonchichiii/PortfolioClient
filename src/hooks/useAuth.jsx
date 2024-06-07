@@ -1,31 +1,35 @@
 import { useDispatch } from 'react-redux';
-import { setUser, clearUser } from '../pages/auth/authSlice';
-import { axiosInstance } from '../api/ApiConfig';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { setUser, clearUser } from '../pages/auth/authSlice';
+import { axiosInstance } from '../api/ApiConfig';
 
 const useAuth = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [error, setError] = useState(null);
 
-  const saveTokens = (access_token, refresh_token) => {
-    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
-    document.cookie = `jwt_refresh_token=${refresh_token}; path=/; secure; httponly`;
+  const saveTokens = (access_token) => {
+    axiosInstance.defaults.headers.common.Authorization = `Bearer ${access_token}`;
   };
 
   const login = async (identifier, password, onSuccess) => {
     try {
-      const response = await axiosInstance.post('auth/login/', { username: identifier, password });
-      const { user, access_token, refresh_token } = response.data;
+      const response = await axiosInstance.post('auth/login/', {
+        username: identifier,
+        password,
+      });
+      const { user, access_token } = response.data;
       dispatch(setUser({ user, token: access_token }));
+      saveTokens(access_token);
       setError(null);
-      saveTokens(access_token, refresh_token);
       if (onSuccess) onSuccess();
       navigate('/dashboard');
       return true;
     } catch (err) {
-      setError(err.response?.data || 'Login failed');
+      setError(
+        err.response?.data || 'Login failed. Please check your credentials.',
+      );
       return false;
     }
   };
@@ -33,15 +37,15 @@ const useAuth = () => {
   const register = async (userData, onSuccess) => {
     try {
       const response = await axiosInstance.post('auth/register/', userData);
-      const { user, access_token, refresh_token } = response.data;
+      const { user, access_token } = response.data;
       dispatch(setUser({ user, token: access_token }));
+      saveTokens(access_token);
       setError(null);
-      saveTokens(access_token, refresh_token);
       if (onSuccess) onSuccess();
       navigate('/dashboard');
       return true;
     } catch (err) {
-      setError(err.response?.data || 'Registration failed');
+      setError(err.response?.data || 'Registration failed. Please try again.');
       return false;
     }
   };
@@ -52,7 +56,7 @@ const useAuth = () => {
       dispatch(clearUser());
       navigate('/');
     } catch (err) {
-      console.error(err);
+      setError(err.response?.data || 'Logout failed. Please try again.');
     }
   };
 

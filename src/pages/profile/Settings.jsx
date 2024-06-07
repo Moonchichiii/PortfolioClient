@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import { axiosMultipart } from '../../api/ApiConfig';
+import styles from './profile.module.css';
 
 function Settings() {
   const [formData, setFormData] = useState({
@@ -39,7 +40,7 @@ function Settings() {
   };
 
   return (
-    <Container>
+    <Container className={styles.settings}>
       <Row>
         <Col md={{ span: 6, offset: 3 }}>
           <h2>Settings</h2>

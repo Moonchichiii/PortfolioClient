@@ -5,7 +5,6 @@ import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
 
 import styles from './landingpage.module.css';
 
-
 const About = React.lazy(() => import('../about/About'));
 const Portfolio = React.lazy(() => import('../portfolio/PortFolio'));
 const Contact = React.lazy(() => import('../contact/Contact'));
@@ -16,7 +15,7 @@ const sections = [
   { id: 'contact', Component: Contact },
 ];
 
-const LandingPage = () => {
+function LandingPage() {
   const navigate = useNavigate();
   const [visibleSections, setVisibleSections] = useState([]);
 
@@ -73,13 +72,13 @@ const LandingPage = () => {
         <Link
           className={styles.scrollIndicator}
           to="about"
-          smooth={true}
+          smooth
           duration={500}
         >
           ▼
         </Link>
       </div>
-      <div className={styles.parallax}></div>
+      <div className={styles.parallax} />
       {sections.map(({ id, Component }) => (
         <section key={id} id={id} className={styles.section}>
           {visibleSections.includes(id) && (
@@ -91,6 +90,6 @@ const LandingPage = () => {
       ))}
     </div>
   );
-};
+}
 
 export default LandingPage;

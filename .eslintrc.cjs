@@ -1,34 +1,37 @@
 module.exports = {
-  extends: [
-    "airbnb",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:prettier/recommended"
-  ],
-  parserOptions: {
-    ecmaFeatures: {
-      jsx: true
-    }
-  },
+  root: true,
   env: {
     browser: true,
-    node: true
+    es2020: true,
+    node: true,
   },
-  plugins: ["react", "react-hooks", "jsx-a11y", "prettier"],
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
+    'prettier',
+  ],
+  ignorePatterns: ['dist'],
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+  },
   rules: {
-    "prettier/prettier": "error",
-    "react/jsx-filename-extension": [1, { extensions: [".js", ".jsx"] }],
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
-    "jsx-a11y/anchor-is-valid": [
-      "error",
-      {
-        components: ["Link"],
-        specialLink: ["to"],
-        aspects: ["noHref", "invalidHref", "preferButton"]
-      }
-    ],
-    "linebreak-style": ["error", "unix"]
-  }
+    'react/jsx-no-target-blank': 'off',
+    'no-undef': 'off',
+    'no-unused-vars': ['warn', { varsIgnorePattern: 'React' }],
+    'react/prop-types': 'off',
+    'react/no-unescaped-entities': 'off',
+    'no-console': 'warn',
+  },
+  globals: {
+    process: 'readonly',
+  },
+  plugins: ['react', 'prettier'],
 };

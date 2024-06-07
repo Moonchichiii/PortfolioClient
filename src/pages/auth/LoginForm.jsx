@@ -3,7 +3,7 @@ import { Form, Button, Alert } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth';
 
 function LoginForm({ onAuthSuccess }) {
-  const { login, error } = useAuth();
+  const { error } = useAuth(); // Adjusted here
   const [formData, setFormData] = useState({
     identifier: '',
     password: '',
