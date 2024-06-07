@@ -1,6 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import styles from "./Home.module.css";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import styles from './Home.module.css';
 
 function Home() {
   return (

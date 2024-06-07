@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, useLocation } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useState, useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faHome,
   faUser,
   faBriefcase,
   faEnvelope,
   faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
-import useAuth from "../../hooks/useAuth";
-import styles from "./NavBar.module.css";
+} from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+import useAuth from '../../hooks/useAuth';
+import styles from './NavBar.module.css';
 
 function NavBar({ onAuthClick }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,7 @@ function NavBar({ onAuthClick }) {
 
   useEffect(() => {
     setIsOpen(false);
-    document.getElementById("burger").checked = false;
+    document.getElementById('burger').checked = false;
   }, [location]);
 
   return (
@@ -67,7 +67,7 @@ function NavBar({ onAuthClick }) {
           ) : (
             <button
               className={styles.authButtons}
-              onClick={() => onAuthClick("login")}
+              onClick={() => onAuthClick('login')}
             >
               Account
             </button>
@@ -87,7 +87,7 @@ function NavBar({ onAuthClick }) {
         ) : (
           <button
             className={styles.authButtons}
-            onClick={() => onAuthClick("login")}
+            onClick={() => onAuthClick('login')}
           >
             Account
           </button>

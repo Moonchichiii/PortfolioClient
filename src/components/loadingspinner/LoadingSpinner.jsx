@@ -1,4 +1,4 @@
-import { MutatingDots } from "react-loader-spinner";
+import { MutatingDots } from 'react-loader-spinner';
 
 function LoadingSpinner() {
   return (

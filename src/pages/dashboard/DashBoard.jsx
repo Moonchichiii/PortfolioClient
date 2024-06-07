@@ -45,9 +45,10 @@ const Welcome = () => {
       <div className={styles.onlineUsers}>
         <h4>Online Users</h4>
         <ul>
-          {Array.isArray(onlineUsers) && onlineUsers.map((user, index) => (
-            <li key={index}>{user.username}</li>
-          ))}
+          {Array.isArray(onlineUsers) &&
+            onlineUsers.map((user, index) => (
+              <li key={index}>{user.username}</li>
+            ))}
         </ul>
       </div>
     </div>
@@ -77,7 +78,9 @@ const Dashboard = () => {
           <Link to="projects">Projects</Link>
           <Link to="settings">Settings</Link>
           <Link to="chat">Chat</Link>
-          <span onClick={handleLogout} className={styles.logoutButton}>Logout</span>
+          <span onClick={handleLogout} className={styles.logoutButton}>
+            Logout
+          </span>
         </nav>
       </aside>
       <main className={styles.mainContent}>

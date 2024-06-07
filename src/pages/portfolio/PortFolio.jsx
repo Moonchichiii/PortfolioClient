@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import GitHubCalendar from "react-github-calendar";
-import styles from "./PortFolio.module.css";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import GitHubCalendar from 'react-github-calendar';
+import styles from './PortFolio.module.css';
 
 function Portfolio() {
   const [repos, setRepos] = useState([]);
@@ -10,11 +10,11 @@ function Portfolio() {
     const fetchGitHubData = async () => {
       try {
         const repoResponse = await axios.get(
-          "https://api.github.com/users/Moonchichiii/repos",
+          'https://api.github.com/users/Moonchichiii/repos',
         );
         setRepos(repoResponse.data);
       } catch (error) {
-        console.error("Error fetching GitHub data", error);
+        console.error('Error fetching GitHub data', error);
       }
     };
 

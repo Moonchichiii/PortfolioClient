@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from "react";
-import { Table, Button, Container, Row, Col, Modal, Form, Alert } from "react-bootstrap";
-import { axiosInstance, axiosMultipart } from "../../api/ApiConfig";
+import React, { useState, useEffect } from 'react';
+import {
+  Table,
+  Button,
+  Container,
+  Row,
+  Col,
+  Modal,
+  Form,
+  Alert,
+} from 'react-bootstrap';
+import { axiosInstance, axiosMultipart } from '../../api/ApiConfig';
 
 function Projects() {
   const [projects, setProjects] = useState([]);
   const [show, setShow] = useState(false);
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
+    title: '',
+    description: '',
   });
   const [fieldErrors, setFieldErrors] = useState({});
-  const [generalError, setGeneralError] = useState("");
+  const [generalError, setGeneralError] = useState('');
 
   const fetchProjects = async () => {
     try {
-      const response = await axiosInstance.get("portfolio/");
+      const response = await axiosInstance.get('portfolio/');
       setProjects(response.data);
     } catch (error) {
-      console.error("Error fetching projects:", error);
+      console.error('Error fetching projects:', error);
     }
   };
 
@@ -39,16 +48,16 @@ function Projects() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFieldErrors({});
-    setGeneralError("");
+    setGeneralError('');
     try {
-      const response = await axiosMultipart.post("portfolio/", formData);
+      const response = await axiosMultipart.post('portfolio/', formData);
       setProjects((prevProjects) => [...prevProjects, response.data]);
       handleClose();
     } catch (error) {
       if (error.response && error.response.data) {
         setFieldErrors(error.response.data);
       } else {
-        setGeneralError("An error occurred while adding the project.");
+        setGeneralError('An error occurred while adding the project.');
       }
     }
   };

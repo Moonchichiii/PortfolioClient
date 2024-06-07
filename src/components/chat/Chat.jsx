@@ -37,7 +37,9 @@ function Chat() {
       <h2>Chat</h2>
       <div>
         {messages.map((msg, index) => (
-          <p key={index}><strong>{msg.username}</strong>: {msg.message}</p>
+          <p key={index}>
+            <strong>{msg.username}</strong>: {msg.message}
+          </p>
         ))}
       </div>
       <input
@@ -49,9 +51,10 @@ function Chat() {
       <div>
         <h3>Online Users</h3>
         <ul>
-          {Array.isArray(onlineUsers) && onlineUsers.map((user, index) => (
-            <li key={index}>{user.username}</li>
-          ))}
+          {Array.isArray(onlineUsers) &&
+            onlineUsers.map((user, index) => (
+              <li key={index}>{user.username}</li>
+            ))}
         </ul>
       </div>
     </div>

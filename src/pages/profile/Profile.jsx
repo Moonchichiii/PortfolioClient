@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
 import { axiosMultipart } from '../../api/ApiConfig';
-import { setUser } from '../../pages/auth/authSlice';
+import { setUser } from '../auth/authSlice';
 
-const Profile = () => {
+function Profile() {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -13,7 +13,7 @@ const Profile = () => {
     avatar: null,
   });
   const [fieldErrors, setFieldErrors] = useState({});
-  const [generalError, setGeneralError] = useState("");
+  const [generalError, setGeneralError] = useState('');
 
   useEffect(() => {
     if (user) {
@@ -37,7 +37,7 @@ const Profile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFieldErrors({});
-    setGeneralError("");
+    setGeneralError('');
     const form = new FormData();
     form.append('bio', formData.bio);
     form.append('location', formData.location);
@@ -51,7 +51,7 @@ const Profile = () => {
       if (error.response && error.response.data) {
         setFieldErrors(error.response.data);
       } else {
-        setGeneralError("An error occurred while updating the profile.");
+        setGeneralError('An error occurred while updating the profile.');
       }
     }
   };
@@ -111,6 +111,6 @@ const Profile = () => {
       </Row>
     </Container>
   );
-};
+}
 
 export default Profile;

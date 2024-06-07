@@ -36,11 +36,14 @@ const LandingPage = () => {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setVisibleSections((prevSections) => [...prevSections, entry.target.id]);
+            setVisibleSections((prevSections) => [
+              ...prevSections,
+              entry.target.id,
+            ]);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     sections.forEach(({ id }) => {

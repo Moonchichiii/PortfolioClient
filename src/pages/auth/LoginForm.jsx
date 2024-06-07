@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
-import useAuth from "../../hooks/useAuth";
+import React, { useState } from 'react';
+import { Form, Button, Alert } from 'react-bootstrap';
+import useAuth from '../../hooks/useAuth';
 
 function LoginForm({ onAuthSuccess }) {
   const { login, error } = useAuth();
   const [formData, setFormData] = useState({
-    identifier: "",
-    password: "",
+    identifier: '',
+    password: '',
   });
 
   const handleChange = (e) => {
@@ -30,9 +30,7 @@ function LoginForm({ onAuthSuccess }) {
         </Alert>
       )}
       <Form.Group controlId="formIdentifier" className="form-group">
-        <Form.Label className="form-label">
-          Username or Email
-        </Form.Label>
+        <Form.Label className="form-label">Username or Email</Form.Label>
         <Form.Control
           type="text"
           name="identifier"
@@ -43,9 +41,7 @@ function LoginForm({ onAuthSuccess }) {
         />
       </Form.Group>
       <Form.Group controlId="formPassword" className="form-group">
-        <Form.Label className="form-label">
-          Password
-        </Form.Label>
+        <Form.Label className="form-label">Password</Form.Label>
         <Form.Control
           type="password"
           name="password"

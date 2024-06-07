@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
-import { axiosMultipart } from "../../api/ApiConfig";
+import React, { useState } from 'react';
+import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
+import { axiosMultipart } from '../../api/ApiConfig';
 
 function Settings() {
   const [formData, setFormData] = useState({
-    username: "",
-    currentPassword: "",
-    newPassword: "",
+    username: '',
+    currentPassword: '',
+    newPassword: '',
   });
   const [fieldErrors, setFieldErrors] = useState({});
-  const [generalError, setGeneralError] = useState("");
+  const [generalError, setGeneralError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,9 +22,9 @@ function Settings() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFieldErrors({});
-    setGeneralError("");
+    setGeneralError('');
     try {
-      await axiosMultipart.put("auth/user/", {
+      await axiosMultipart.put('auth/user/', {
         username: formData.username,
         password: formData.newPassword,
         current_password: formData.currentPassword,
@@ -33,7 +33,7 @@ function Settings() {
       if (error.response && error.response.data) {
         setFieldErrors(error.response.data);
       } else {
-        setGeneralError("An error occurred while updating settings.");
+        setGeneralError('An error occurred while updating settings.');
       }
     }
   };

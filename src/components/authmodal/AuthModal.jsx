@@ -5,7 +5,9 @@ import styles from './AuthModal.module.css';
 import useAuth from '../../hooks/useAuth';
 
 const LoginForm = React.lazy(() => import('../../pages/auth/LoginForm'));
-const RegistrationForm = React.lazy(() => import('../../pages/auth/RegistrationForm'));
+const RegistrationForm = React.lazy(
+  () => import('../../pages/auth/RegistrationForm'),
+);
 
 function AuthModal({ initialType = 'login', show, handleClose }) {
   const [formType, setFormType] = useState(initialType);
@@ -39,10 +41,11 @@ function AuthModal({ initialType = 'login', show, handleClose }) {
       </Modal.Header>
       <Modal.Body>
         <Suspense fallback={<LoadingSpinner />}>
-          {formType === 'login' ? 
-            <LoginForm onAuthSuccess={handleLogin} /> : 
+          {formType === 'login' ? (
+            <LoginForm onAuthSuccess={handleLogin} />
+          ) : (
             <RegistrationForm onAuthSuccess={handleRegister} />
-          }
+          )}
         </Suspense>
       </Modal.Body>
       <Modal.Footer>
