@@ -7,7 +7,7 @@ import Chat from '../../components/chat/Chat';
 import useAuth from '../../hooks/useAuth';
 import { useCurrentUser } from '../../context/CurrentUserContext';
 
-import styles from './dashboard.module.css';
+import styles from './dash.module.css';
 
 const Profile = React.lazy(() => import('../profile/Profile'));
 const Projects = React.lazy(() => import('../profile/Projects'));
