@@ -6,7 +6,7 @@ import {
   useLocation,
 } from 'react-router-dom';
 import LoadingSpinner from './components/loadingspinner/LoadingSpinner';
-import Layout from './pages/layout/LayOut';
+import Layout from './layout/LayOut';
 import AuthModal from './components/authmodal/AuthModal';
 import ProtectedRoute from './routes/ProtectedRoute';
 import ErrorBoundary from './components/Common/ErrorBoundary';
