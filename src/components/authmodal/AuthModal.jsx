@@ -1,9 +1,10 @@
 import React, { useState, Suspense } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import LoadingSpinner from '../loadingspinner/LoadingSpinner';
-import styles from './AuthModal.module.css';
+
 import useAuth from '../../hooks/useAuth';
 
+import styles from './AuthModal.module.css';
 const LoginForm = React.lazy(() => import('../../pages/auth/LoginForm'));
 const RegistrationForm = React.lazy(
   () => import('../../pages/auth/RegistrationForm'),
