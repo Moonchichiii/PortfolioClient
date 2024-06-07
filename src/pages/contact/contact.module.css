@@ -86,7 +86,8 @@
 }
 
 @media (max-width: 768px) {
-  .contactForm, .contactInfo {
+  .contactForm,
+  .contactInfo {
     text-align: center;
   }
 
