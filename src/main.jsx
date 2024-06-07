@@ -7,7 +7,7 @@ import { CurrentUserProvider } from './context/CurrentUserContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './main.css';
 
-
+console.log('Starting rendering...');
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
@@ -17,3 +17,10 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>,
 );
+console.log('Rendering completed.');
+
+console.log('Initial store state:', store.getState()); // Log initial store state
+
+store.subscribe(() => {
+  console.log('Store updated:', store.getState()); // Log updated store state
+});

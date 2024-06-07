@@ -6,7 +6,6 @@ import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
 import Chat from '../../components/chat/Chat';
 import useAuth from '../../hooks/useAuth';
 import { useCurrentUser } from '../../context/CurrentUserContext';
-
 import styles from './dash.module.css';
 
 const Profile = React.lazy(() => import('../profile/Profile'));
@@ -21,6 +20,7 @@ function Welcome() {
     const fetchOnlineUsers = async () => {
       try {
         const response = await axiosInstance.get('/api/profiles/online/');
+        console.log('Online users response:', response);
         if (Array.isArray(response.data)) {
           setOnlineUsers(response.data);
         } else {
@@ -63,6 +63,7 @@ function Dashboard() {
   const navigate = useNavigate();
 
   if (!profile) {
+    console.log('Profile is not available');
     return <LoadingSpinner />;
   }
 

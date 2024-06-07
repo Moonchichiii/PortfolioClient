@@ -29,7 +29,7 @@ export function CurrentUserProvider({ children }) {
 
         if (refresh_token) {
           try {
-            const response = await axiosInstance.post('token/refresh/', {
+            const response = await axiosInstance.post('auth/token/refresh/', {
               refresh: refresh_token,
             });
             axiosInstance.defaults.headers.common.Authorization = `Bearer ${response.data.access}`;
@@ -46,7 +46,7 @@ export function CurrentUserProvider({ children }) {
         }
       } else {
         try {
-          await axiosInstance.post('token/verify/', { token });
+          await axiosInstance.post('auth/token/verify/', { token });
         } catch (error) {
           if (error.response && error.response.status === 401) {
             const refresh_token = document.cookie
@@ -54,7 +54,7 @@ export function CurrentUserProvider({ children }) {
               .find((row) => row.startsWith('jwt_refresh_token'))
               ?.split('=')[1];
             try {
-              const response = await axiosInstance.post('token/refresh/', {
+              const response = await axiosInstance.post('auth/token/refresh/', {
                 refresh: refresh_token,
               });
               axiosInstance.defaults.headers.common.Authorization = `Bearer ${response.data.access}`;

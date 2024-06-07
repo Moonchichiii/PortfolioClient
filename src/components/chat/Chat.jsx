@@ -1,34 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import io from 'socket.io-client';
-
-const socket = io(import.meta.env.VITE_SOCKET_URL);
 
 function Chat() {
+  const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
   const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
-    socket.on('message', (newMessage) => {
-      setMessages((prevMessages) => [...prevMessages, newMessage]);
-    });
-
-    socket.on('online_users', (users) => {
-      if (Array.isArray(users)) {
-        setOnlineUsers(users);
-      } else {
-        setOnlineUsers([]);
+    const newSocket = new WebSocket('ws://localhost:8000/ws/chat/');
+    newSocket.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.type === 'message') {
+        setMessages((prevMessages) => [...prevMessages, data.message]);
+      } else if (data.type === 'online_users') {
+        setOnlineUsers(data.users);
       }
-    });
+    };
+    setSocket(newSocket);
 
     return () => {
-      socket.off('message');
-      socket.off('online_users');
+      newSocket.close();
     };
   }, []);
 
   const sendMessage = () => {
-    socket.emit('sendMessage', { message });
+    if (socket) socket.send(JSON.stringify({ message }));
     setMessage('');
   };
 
@@ -37,8 +33,8 @@ function Chat() {
       <h2>Chat</h2>
       <div>
         {messages.map((msg, index) => (
-          <p key={msg.id || index}>
-            <strong>{msg.username}</strong>: {msg.message}
+          <p key={index}>
+            <strong>{msg.username}</strong>: {msg.content}
           </p>
         ))}
       </div>
@@ -53,10 +49,9 @@ function Chat() {
       <div>
         <h3>Online Users</h3>
         <ul>
-          {Array.isArray(onlineUsers) &&
-            onlineUsers.map((user, index) => (
-              <li key={user.id || index}>{user.username}</li>
-            ))}
+          {onlineUsers.map((user, index) => (
+            <li key={index}>{user}</li>
+          ))}
         </ul>
       </div>
     </div>

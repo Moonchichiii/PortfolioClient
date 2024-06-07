@@ -16,4 +16,8 @@ const axiosMultipart = axios.create({
   withCredentials: true,
 });
 
+// Add console logs for debugging
+console.log('axiosInstance:', axiosInstance);
+console.log('axiosMultipart:', axiosMultipart);
+
 export { axiosInstance, axiosMultipart };

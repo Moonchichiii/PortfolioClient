@@ -15,10 +15,12 @@ const useAuth = () => {
 
   const login = async (identifier, password, onSuccess) => {
     try {
+      console.log('Logging in...');
       const response = await axiosInstance.post('auth/login/', {
         username: identifier,
         password,
       });
+      console.log('Login response:', response.data);
       const { user, access_token } = response.data;
       dispatch(setUser({ user, token: access_token }));
       saveTokens(access_token);
@@ -27,6 +29,7 @@ const useAuth = () => {
       navigate('/dashboard');
       return true;
     } catch (err) {
+      console.error('Login error:', err);
       setError(
         err.response?.data || 'Login failed. Please check your credentials.',
       );
@@ -36,7 +39,9 @@ const useAuth = () => {
 
   const register = async (userData, onSuccess) => {
     try {
+      console.log('Registering...');
       const response = await axiosInstance.post('auth/register/', userData);
+      console.log('Registration response:', response.data);
       const { user, access_token } = response.data;
       dispatch(setUser({ user, token: access_token }));
       saveTokens(access_token);
@@ -45,6 +50,7 @@ const useAuth = () => {
       navigate('/dashboard');
       return true;
     } catch (err) {
+      console.error('Registration error:', err);
       setError(err.response?.data || 'Registration failed. Please try again.');
       return false;
     }
@@ -52,10 +58,12 @@ const useAuth = () => {
 
   const logout = async () => {
     try {
+      console.log('Logging out...');
       await axiosInstance.post('auth/logout/');
       dispatch(clearUser());
       navigate('/');
     } catch (err) {
+      console.error('Logout error:', err);
       setError(err.response?.data || 'Logout failed. Please try again.');
     }
   };
