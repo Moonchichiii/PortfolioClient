@@ -11,6 +11,8 @@ import {
 } from 'react-bootstrap';
 import { axiosInstance, axiosMultipart } from '../../api/ApiConfig';
 
+import styles from './projects.module.css';
+
 function Projects() {
   const [projects, setProjects] = useState([]);
   const [show, setShow] = useState(false);

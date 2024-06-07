@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import GitHubCalendar from 'react-github-calendar';
-import styles from './PortFolio.module.css';
+import styles from './portfolio.module.css';
 
 function Portfolio() {
   const [repos, setRepos] = useState([]);

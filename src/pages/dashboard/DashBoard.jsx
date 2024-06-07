@@ -2,11 +2,12 @@ import React, { Suspense, useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
-import styles from './DashBoard.module.css';
 import Chat from '../../components/chat/Chat';
 import axios from 'axios';
 import useAuth from '../../hooks/useAuth';
 import { useCurrentUser } from '../../context/CurrentUserContext';
+
+import styles from './dashboard.module.css';
 
 const Profile = React.lazy(() => import('../profile/Profile'));
 const Projects = React.lazy(() => import('../profile/Projects'));

@@ -10,7 +10,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';
 import useAuth from '../../hooks/useAuth';
-import styles from './NavBar.module.css';
+import styles from './navbar.module.css';
 
 function NavBar({ onAuthClick }) {
   const [isOpen, setIsOpen] = useState(false);

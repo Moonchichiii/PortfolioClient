@@ -4,7 +4,8 @@ import LoadingSpinner from '../loadingspinner/LoadingSpinner';
 
 import useAuth from '../../hooks/useAuth';
 
-import styles from './AuthModal.module.css';
+import styles from './authmodal.module.css';
+
 const LoginForm = React.lazy(() => import('../../pages/auth/LoginForm'));
 const RegistrationForm = React.lazy(
   () => import('../../pages/auth/RegistrationForm'),

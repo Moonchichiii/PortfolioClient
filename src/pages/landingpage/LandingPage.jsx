@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-scroll';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
 
-import styles from './LandingPage.module.css';
+import styles from './landingpage.module.css';
 
 
 const About = React.lazy(() => import('../about/About'));
