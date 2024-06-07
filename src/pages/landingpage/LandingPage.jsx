@@ -1,8 +1,10 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-scroll';
-import styles from './LandingPage.module.css';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
+
+import styles from './LandingPage.module.css';
+
 
 const About = React.lazy(() => import('../about/About'));
 const Portfolio = React.lazy(() => import('../portfolio/PortFolio'));
