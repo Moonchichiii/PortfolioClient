@@ -6,7 +6,18 @@ export default defineConfig({
   plugins: [
     react(),
     purgecss({
-      content: ['./index.html', './src/**/*.vue', './src/**/*.js'],
+      content: [
+        './index.html',
+        './src/**/*.jsx', 
+        './src/**/*.js',
+        './src/**/*.ts',
+        './src/**/*.tsx',  
+        './src/**/*.css', 
+        './public/**/*.html',  
+      ],
+      safelist: {
+        standard: [/^btn-/, /^nav-/, /^modal-/, /^carousel-/],  
+      },
     }),
   ],
   build: {
