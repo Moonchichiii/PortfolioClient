@@ -19,7 +19,7 @@ function Welcome() {
   useEffect(() => {
     const fetchOnlineUsers = async () => {
       try {
-        const response = await axiosInstance.get('/api/profiles/online/');
+        const response = await axiosInstance.get('profiles/online/');
         console.log('Online users response:', response);
         if (Array.isArray(response.data)) {
           setOnlineUsers(response.data);

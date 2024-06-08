@@ -15,10 +15,12 @@
 }
 
 .contactForm {
-  background: var(--color-ash);
+  background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .contactForm .form-group {

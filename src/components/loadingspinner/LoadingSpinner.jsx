@@ -5,10 +5,10 @@ function LoadingSpinner() {
     <div className="loading-spinner">
       <MutatingDots
         visible
-        height="200"
-        width="200"
-        color="#30323D"
-        secondaryColor="#30323D"
+        height="150"
+        width="150"
+        color="#F9B233"
+        secondaryColor="#F9B233"
         radius="12.5"
         ariaLabel="mutating-dots-loading"
       />

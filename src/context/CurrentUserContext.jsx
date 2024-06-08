@@ -12,7 +12,7 @@ export function CurrentUserProvider({ children }) {
 
   const fetchProfile = async () => {
     try {
-      const response = await axiosInstance.get('profiles/');
+      const response = await axiosInstance.get('profiles/me/');
       setProfile(response.data);
     } catch (error) {
       console.error('Error fetching profile:', error);
@@ -37,7 +37,7 @@ export function CurrentUserProvider({ children }) {
               setUser({
                 user: response.data.user,
                 token: response.data.access,
-              }),
+              })
             );
           } catch (refreshError) {
             console.error('Token refresh failed:', refreshError);
@@ -62,7 +62,7 @@ export function CurrentUserProvider({ children }) {
                 setUser({
                   user: response.data.user,
                   token: response.data.access,
-                }),
+                })
               );
             } catch (refreshError) {
               console.error('Token refresh failed:', refreshError);

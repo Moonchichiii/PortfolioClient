@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-scroll';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
 
-import styles from './landingpage.module.css';
+import styles from './land.module.css';
 
 const About = React.lazy(() => import('../about/About'));
 const Portfolio = React.lazy(() => import('../portfolio/PortFolio'));
@@ -44,7 +44,7 @@ function LandingPage() {
           }
         });
       },
-      { threshold: 0.1 },
+      { threshold: 0.1 }
     );
 
     sections.forEach(({ id }) => {
@@ -74,6 +74,7 @@ function LandingPage() {
           to="about"
           smooth
           duration={500}
+          offset={-60} 
         >
           ▼
         </Link>
