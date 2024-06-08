@@ -1,5 +1,6 @@
+/* navbar.module.css */
 :root {
-  --color-gray: #2e2e2e;
+  --color-gray: #2e22e;
   --color-text-light: #ffffff;
   --color-ash: #383838;
   --color-saffron: #f4c430;
@@ -8,7 +9,7 @@
 }
 
 .navbar {
-  background-color: var(--color-gray); 
+  background-color: var(--color-gray);
   color: var(--color-text-light);
   padding: 1rem;
   display: flex;
@@ -30,7 +31,7 @@
 .navbarLinksOpen {
   flex-direction: column;
   position: fixed;
-  top: 60px; 
+  top: 60px;
   right: 0;
   width: 75%;
   max-width: 300px;

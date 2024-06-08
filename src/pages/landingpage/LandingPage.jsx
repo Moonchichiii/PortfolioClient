@@ -2,7 +2,6 @@ import React, { useEffect, useState, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-scroll';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
-
 import styles from './land.module.css';
 
 const About = React.lazy(() => import('../about/About'));
@@ -67,14 +66,14 @@ function LandingPage() {
   return (
     <div className={styles.landingPage}>
       <div className={styles.hero}>
-        <h1 className={styles.title}>Welcome to My Portfolio</h1>
+        <h1 className={styles.heroText}>Welcome to My Portfolio</h1>
         <p className={styles.subtitle}>Scroll or click to enter</p>
         <Link
           className={styles.scrollIndicator}
           to="about"
           smooth
           duration={500}
-          offset={-60} 
+          offset={-60}
         >
           ▼
         </Link>

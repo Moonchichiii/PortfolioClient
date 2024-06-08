@@ -10,13 +10,15 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: linear-gradient(135deg, var(--color-pink), var(--color-jet));
-  color: white;
+  background: url('path_to_background_image.jpg') no-repeat center center/cover;
 }
 
-.title {
-  font-size: 3rem;
-  margin: 0;
+.heroText {
+  font-size: 8vw;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
   animation: fadeIn 2s ease-in-out;
 }
 
@@ -44,6 +46,7 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
+
 /* Parallax Effect */
 .parallax {
   height: 100vh;  
@@ -65,9 +68,4 @@
 @keyframes fadeIn {
   0% { opacity: 0; }
   100% { opacity: 1; }
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
 }
