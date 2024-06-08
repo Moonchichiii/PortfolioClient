@@ -1,17 +1,22 @@
-const express = require('express');
-const http = require('http');
-const socketIo = require('socket.io');
-const path = require('path');
-const { createProxyMiddleware } = require('http-proxy-middleware');
-const cookieParser = require('cookie-parser');
-const compression = require('compression');
-const errorHandler = require('./errorhandler'); 
-const cors = require('cors');
-require('dotenv').config();
+import express from 'express';
+import http from 'http';
+import { Server } from 'socket.io';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { createProxyMiddleware } from 'http-proxy-middleware';
+import cookieParser from 'cookie-parser';
+import compression from 'compression';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server, {
+const io = new Server(server, {
     cors: {
         origin: process.env.FRONTEND_URL,
         methods: ["GET", "POST"],
@@ -19,21 +24,16 @@ const io = socketIo(server, {
     }
 });
 
-// Use compression middleware
 app.use(compression());
-
 app.use(cookieParser());
 
-// Enable CORS with options
 app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
 }));
 
-// Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Proxy API requests to the Django backend
 const apiProxy = createProxyMiddleware('/api', {
     target: process.env.VITE_BASE_URL,
     changeOrigin: true,
@@ -42,15 +42,15 @@ const apiProxy = createProxyMiddleware('/api', {
 
 app.use('/api', apiProxy);
 
-// Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-// Use the error handler middleware
-app.use(errorHandler);
+(async () => {
+    const errorHandler = await import('./errorhandler.js');
+    app.use(errorHandler.default);
+})();
 
-// Socket.IO setup
 io.on('connection', (socket) => {
     console.log('New client connected');
 
