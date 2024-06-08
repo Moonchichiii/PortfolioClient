@@ -17,10 +17,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>,
 );
-console.log('Rendering completed.');
-
-console.log('Initial store state:', store.getState()); // Log initial store state
-
 store.subscribe(() => {
-  console.log('Store updated:', store.getState()); // Log updated store state
 });
+
+
+

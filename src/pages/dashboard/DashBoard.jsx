@@ -20,14 +20,12 @@ function Welcome() {
     const fetchOnlineUsers = async () => {
       try {
         const response = await axiosInstance.get('profiles/online/');
-        console.log('Online users response:', response);
         if (Array.isArray(response.data)) {
           setOnlineUsers(response.data);
         } else {
           setOnlineUsers([]);
         }
       } catch (error) {
-        console.error('Error fetching online users:', error);
         setOnlineUsers([]);
       }
     };
@@ -63,7 +61,6 @@ function Dashboard() {
   const navigate = useNavigate();
 
   if (!profile) {
-    console.log('Profile is not available');
     return <LoadingSpinner />;
   }
 

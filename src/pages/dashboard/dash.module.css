@@ -1,5 +1,23 @@
-/* dash.module.css */
-.dashboard {
+:root {
+    --color-light-blue: #8ECAE6;
+    --color-blue: #219EBC;
+    --color-dark-blue: #023047;
+    --color-yellow: #FFB703;
+    --color-orange: #FB8500;
+    --color-saffron: #f4c430;
+    --color-coral: #ff6f61;
+    --color-pink: #b56576;
+    --background-color: #ffffff;
+    --color-text-dark: #333333;
+    --color-text-light: #ffffff;
+    --contact-section: #cdd1c4;
+    --color-jet: #30323d;
+    --color-gray: #2e2e2e;
+    --color-ash: #383838;
+    --color-glaucous: #6082b6;
+  }
+  
+  .dashboard {
     display: flex;
     height: 100vh;
   }
@@ -49,6 +67,23 @@
     flex: 1;
     padding: 2rem;
     overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+  }
+  
+  .bentoBox {
+    background: var(--color-ash);
+    color: var(--color-text-light);
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .bentoBox:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
   }
   
   .welcome {
