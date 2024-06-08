@@ -14,7 +14,7 @@ function Chat() {
     const socketUrl = process.env.NODE_ENV === 'production'
       ? 'wss://your-production-url/ws/chat/'
       : 'ws://localhost:8000/ws/chat/';
-      
+    
     const newSocket = new WebSocket(socketUrl);
     
     newSocket.onopen = () => {
