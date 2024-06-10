@@ -53,18 +53,36 @@
   color: var(--color-accent);
 }
 
-.contactForm .form-group {
+.contactForm .formGroup {
   margin-bottom: 1rem;
 }
 
-.contactForm .form-control {
+.contactForm .formControl {
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
+  border: none;
+  border-bottom: 2px solid var(--color-text);
+  background-color: transparent;
+  color: var(--color-text);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contactForm .formControl:focus {
+  border-color: var(--color-accent);
+  box-shadow: none;
+  outline: none;
+}
+
+.contactForm .formControl::placeholder {
+  color: var(--color-text);
+}
+
+.contactForm textarea.formControl {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
 }
 
 .contactForm .btn {

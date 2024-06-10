@@ -52,3 +52,21 @@
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 768px) {
+  .portfolio {
+    padding: 1rem;
+  }
+
+  .projectCard {
+    padding: 1rem;
+  }
+
+  .projectCard h3 {
+    font-size: 1.25rem;
+  }
+
+  .projectCard p {
+    font-size: 0.875rem;
+  }
+}

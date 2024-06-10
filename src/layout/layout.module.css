@@ -20,26 +20,26 @@
 }
 
 .sidebar {
-  position: fixed;
-  top: 60px;
-  left: 0;
-  width: 250px;
-  height: calc(100% - 60px);
-  background: var(--color-primary);
+  background: rgba(74, 74, 74, 0.8);
   color: var(--color-text);
   padding: 1rem;
   box-sizing: border-box;
   overflow-y: auto;
   z-index: 900;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 200px;
+  height: calc(100% - 60px);
 }
 
 .mainContent {
-  margin-left: 250px;
   padding: 2rem;
-  width: calc(100% - 250px);
   box-sizing: border-box;
   overflow: auto;
   flex: 1;
+  margin-left: 200px;
+  width: calc(100% - 200px);
 }
 
 .footer {
@@ -50,4 +50,18 @@
   width: 100%;
   box-sizing: border-box;
   position: relative;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .mainContent {
+    margin-left: 0;
+    padding: 1rem;
+    width: 100%;
+  }
 }

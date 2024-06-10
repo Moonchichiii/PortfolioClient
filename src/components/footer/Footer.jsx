@@ -9,10 +9,9 @@ function Footer() {
       <div className="container">
         <div className={styles.footerContent}>
           <div className={styles.footerColumn}>
-            <h3>About Me</h3>
+            <h3>Mats Gonthier Gustafsson</h3>
             <p>
-              I am a passionate web developer specializing in creating beautiful
-              and functional websites.
+              France, Toulouse 31000 
             </p>
           </div>
           <div className={styles.footerColumn}>
@@ -35,31 +34,43 @@ function Footer() {
           <div className={styles.footerColumn}>
             <h3>Contact Me</h3>
             <form className={styles.contactForm}>
-              <div className="form-group">
+              <div className={styles.formGroup}>
+                <label htmlFor="name">Your Name</label>
                 <input
                   type="text"
-                  className="form-control"
+                  className={styles.formControl}
+                  id="name"
                   placeholder="Your Name"
                   name="name"
+                  aria-required="true"
+                  required
                 />
               </div>
-              <div className="form-group">
+              <div className={styles.formGroup}>
+                <label htmlFor="email">Your Email</label>
                 <input
                   type="email"
-                  className="form-control"
+                  className={styles.formControl}
+                  id="email"
                   placeholder="Your Email"
                   name="email"
+                  aria-required="true"
+                  required
                 />
               </div>
-              <div className="form-group">
+              <div className={styles.formGroup}>
+                <label htmlFor="message">Your Message</label>
                 <textarea
-                  className="form-control"
+                  className={styles.formControl}
+                  id="message"
                   rows="3"
                   placeholder="Your Message"
                   name="message"
+                  aria-required="true"
+                  required
                 />
               </div>
-              <button type="submit" className="btn btn-primary">
+              <button type="submit" className={styles.btn}>
                 Send Message
               </button>
             </form>
@@ -71,6 +82,7 @@ function Footer() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="LinkedIn"
               >
                 <FontAwesomeIcon icon={faLinkedin} />
               </a>
@@ -78,6 +90,7 @@ function Footer() {
                 href="https://github.com/Moonchichiii"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="GitHub"
               >
                 <FontAwesomeIcon icon={faGithub} />
               </a>

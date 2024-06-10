@@ -10,13 +10,43 @@
 }
 
 .home {
-  padding: 2rem;
-  margin-top: 4.5rem;
-  text-align: center;
+  padding: 1rem;  
   color: var(--color-text-light);
   background: linear-gradient(135deg, var(--color-saffron), var(--color-coral));
   min-height: calc(100vh - 8.5rem);
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem;
+  background-color: var(--color-primary);
+  border-radius: 20px;
+}
+
+.heroSection {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+}
+
+.imageBox img {
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .title, .subtitle, .button {
@@ -25,7 +55,6 @@
 
 .introSection {
   margin-top: 3rem;
-  text-align: center;
 }
 
 .introSection > .introTitle, .introText {
@@ -76,5 +105,41 @@
   font-size: 1rem;
   margin-bottom: 2rem;
   line-height: 1.75;
-  opacity: 0; 
+  opacity: 0;
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 1rem;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .button {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+
+  .introSection {
+    margin-top: 1.5rem;
+  }
+
+  .introTitle {
+    font-size: 1.5rem;
+  }
+
+  .introText {
+    font-size: 0.875rem;
+  }
 }

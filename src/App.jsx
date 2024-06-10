@@ -1,28 +1,13 @@
 import React, { Suspense, useState } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  useLocation,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoadingSpinner from './components/loadingspinner/LoadingSpinner';
-import Layout from './layout/LayOut';
+import Layout from './layout/Layout';
 import AuthModal from './components/authmodal/AuthModal';
 import ProtectedRoute from './routes/ProtectedRoute';
 import ErrorBoundary from './components/Common/ErrorBoundary';
 
 const LandingPage = React.lazy(() => import('./pages/landingpage/LandingPage'));
 const Dashboard = React.lazy(() => import('./pages/dashboard/DashBoard'));
-
-function Wrapper({ children, onAuthClick }) {
-  const location = useLocation();
-  const isLandingPage = location.pathname === '/';
-  return isLandingPage ? (
-    children
-  ) : (
-    <Layout onAuthClick={onAuthClick}>{children}</Layout>
-  );
-}
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -40,28 +25,28 @@ function App() {
   return (
     <Router>
       <Suspense fallback={<LoadingSpinner />}>
-        <Wrapper onAuthClick={handleShowAuthModal}>
-          <Routes>
-            <Route
-              path="/"
-              element={
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ErrorBoundary>
+                <LandingPage onAuthClick={handleShowAuthModal} />
+              </ErrorBoundary>
+            }
+          />
+          <Route
+            path="/dashboard/*"
+            element={
+              <ProtectedRoute>
                 <ErrorBoundary>
-                  <LandingPage />
-                </ErrorBoundary>
-              }
-            />
-            <Route
-              path="/dashboard/*"
-              element={
-                <ProtectedRoute>
-                  <ErrorBoundary>
+                  <Layout onAuthClick={handleShowAuthModal}>
                     <Dashboard />
-                  </ErrorBoundary>
-                </ProtectedRoute>
-              }
-            />
-          </Routes>
-        </Wrapper>
+                  </Layout>
+                </ErrorBoundary>
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
       </Suspense>
       <AuthModal
         initialType={authModalType}

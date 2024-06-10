@@ -1,19 +1,20 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
-import Header from '../components/header/Header';
-import Footer from '../components/footer/Footer';
-import Sidebar from '../components/sidebar/Sidebar';
+import { useLocation } from 'react-router-dom';
+// import Header from '../components/header/Header';
+// import Footer from '../components/footer/Footer';
+// import Sidebar from '../components/sidebar/Sidebar';
 import styles from './layout.module.css';
 
 function Layout({ children, onAuthClick }) {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const location = useLocation();
+  const isLandingPage = location.pathname === '/';
 
   return (
     <div className={styles.layout}>
-      <Header onAuthClick={onAuthClick} />
-      <Sidebar />
-      <main className={styles.mainContent}>{children}</main>
-      <Footer />
+      {/* {!isLandingPage && <Header onAuthClick={onAuthClick} />} */}
+      {/* {!isLandingPage && <Sidebar />} */}
+      {/* <main className={styles.mainContent}>{children}</main> */}
+      {/* {!isLandingPage && <Footer />} */}
     </div>
   );
 }

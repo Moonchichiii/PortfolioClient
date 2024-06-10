@@ -3,6 +3,8 @@ import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
 import Header from '../../components/header/Header';
+import Footer from '../../components/footer/Footer';
+import Sidebar from '../../components/sidebar/Sidebar';
 import styles from './land.module.css';
 
 const Home = React.lazy(() => import('../home/Home'));
@@ -15,7 +17,7 @@ const sections = [
   { id: 'portfolio', Component: Portfolio },
 ];
 
-function LandingPage() {
+function LandingPage({ onAuthClick }) {
   const [visibleSections, setVisibleSections] = useState([]);
   const [showHeader, setShowHeader] = useState(false);
 
@@ -30,7 +32,7 @@ function LandingPage() {
             ]);
           }
           if (entry.target.id === 'home' && entry.isIntersecting) {
-            setTimeout(() => setShowHeader(true), 500);  // Ensure home is fully loaded
+            setTimeout(() => setShowHeader(true), 500);
           }
         });
       },
@@ -56,7 +58,8 @@ function LandingPage() {
 
   return (
     <div className={styles.landingPage}>
-      {showHeader && <Header />}
+      {showHeader && <Header onAuthClick={onAuthClick} />}
+      {showHeader && <Sidebar />}
       <div className={styles.hero}>
         <motion.h1
           className={styles.heroText}
@@ -100,8 +103,10 @@ function LandingPage() {
           )}
         </section>
       ))}
+      <Footer />
     </div>
   );
 }
 
 export default LandingPage;
+
