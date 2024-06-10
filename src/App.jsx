@@ -12,10 +12,6 @@ import ProtectedRoute from './routes/ProtectedRoute';
 import ErrorBoundary from './components/Common/ErrorBoundary';
 
 const LandingPage = React.lazy(() => import('./pages/landingpage/LandingPage'));
-const Home = React.lazy(() => import('./pages/home/Home'));
-const About = React.lazy(() => import('./pages/about/About'));
-const Contact = React.lazy(() => import('./pages/contact/Contact'));
-const Portfolio = React.lazy(() => import('./pages/portfolio/PortFolio'));
 const Dashboard = React.lazy(() => import('./pages/dashboard/DashBoard'));
 
 function Wrapper({ children, onAuthClick }) {
@@ -51,38 +47,6 @@ function App() {
               element={
                 <ErrorBoundary>
                   <LandingPage />
-                </ErrorBoundary>
-              }
-            />
-            <Route
-              path="/home"
-              element={
-                <ErrorBoundary>
-                  <Home />
-                </ErrorBoundary>
-              }
-            />
-            <Route
-              path="/about"
-              element={
-                <ErrorBoundary>
-                  <About />
-                </ErrorBoundary>
-              }
-            />
-            <Route
-              path="/contact"
-              element={
-                <ErrorBoundary>
-                  <Contact />
-                </ErrorBoundary>
-              }
-            />
-            <Route
-              path="/portfolio"
-              element={
-                <ErrorBoundary>
-                  <Portfolio />
                 </ErrorBoundary>
               }
             />

@@ -33,6 +33,38 @@ function Footer() {
             </ul>
           </div>
           <div className={styles.footerColumn}>
+            <h3>Contact Me</h3>
+            <form className={styles.contactForm}>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder="Your Name"
+                  name="name"
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  type="email"
+                  className="form-control"
+                  placeholder="Your Email"
+                  name="email"
+                />
+              </div>
+              <div className="form-group">
+                <textarea
+                  className="form-control"
+                  rows="3"
+                  placeholder="Your Message"
+                  name="message"
+                />
+              </div>
+              <button type="submit" className="btn btn-primary">
+                Send Message
+              </button>
+            </form>
+          </div>
+          <div className={styles.footerColumn}>
             <h3>Follow Me</h3>
             <div className={styles.socialIcons}>
               <a

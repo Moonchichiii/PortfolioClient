@@ -1,35 +1,23 @@
 import React, { useEffect, useState, Suspense } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-scroll';
+import { motion } from 'framer-motion';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
+import Header from '../../components/header/Header';
 import styles from './land.module.css';
 
+const Home = React.lazy(() => import('../home/Home'));
 const About = React.lazy(() => import('../about/About'));
-const Portfolio = React.lazy(() => import('../portfolio/PortFolio'));
-const Contact = React.lazy(() => import('../contact/Contact'));
+const Portfolio = React.lazy(() => import('../portfolio/Portfolio'));
 
 const sections = [
+  { id: 'home', Component: Home },
   { id: 'about', Component: About },
   { id: 'portfolio', Component: Portfolio },
-  { id: 'contact', Component: Contact },
 ];
 
 function LandingPage() {
-  const navigate = useNavigate();
   const [visibleSections, setVisibleSections] = useState([]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > window.innerHeight / 2) {
-        navigate('/home');
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [navigate]);
+  const [showHeader, setShowHeader] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,6 +28,9 @@ function LandingPage() {
               ...prevSections,
               entry.target.id,
             ]);
+          }
+          if (entry.target.id === 'home' && entry.isIntersecting) {
+            setTimeout(() => setShowHeader(true), 500);  // Ensure home is fully loaded
           }
         });
       },
@@ -65,18 +56,39 @@ function LandingPage() {
 
   return (
     <div className={styles.landingPage}>
+      {showHeader && <Header />}
       <div className={styles.hero}>
-        <h1 className={styles.heroText}>Welcome to My Portfolio</h1>
-        <p className={styles.subtitle}>Scroll or click to enter</p>
-        <Link
-          className={styles.scrollIndicator}
-          to="about"
-          smooth
-          duration={500}
-          offset={-60}
+        <motion.h1
+          className={styles.heroText}
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1 }}
         >
-          ▼
-        </Link>
+          Portfolio
+        </motion.h1>
+        <motion.p
+          className={styles.subtitle}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5 }}
+        >
+          Scroll or click to enter
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+        >
+          <Link
+            className={styles.scrollIndicator}
+            to="home"
+            smooth
+            duration={500}
+            offset={-60}
+          >
+            ▼
+          </Link>
+        </motion.div>
       </div>
       <div className={styles.parallax} />
       {sections.map(({ id, Component }) => (

@@ -1,0 +1,26 @@
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 250px;
+    height: calc(100% - 60px);
+    background: var(--color-primary);
+    color: var(--color-text);
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow-y: auto;
+    z-index: 900;
+  }
+  
+  .navLink {
+    display: block;
+    color: var(--color-text);
+    margin: 1rem 0;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .navLink:hover {
+    color: var(--color-accent);
+  }
+  

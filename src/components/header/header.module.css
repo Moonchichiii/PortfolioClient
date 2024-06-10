@@ -1,0 +1,23 @@
+.header {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+}
+
+.account {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.accountText {
+  margin-left: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+}

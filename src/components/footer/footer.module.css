@@ -1,6 +1,6 @@
 .footer {
-  background: var(--color-jet);
-  color: var(--color-text-light);
+  background: var(--color-primary);
+  color: var(--color-text);
   padding: 2rem 1rem;
   text-align: center;
   width: 100%;
@@ -25,7 +25,7 @@
 .footerColumn h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  font-family: 'DM Serif Display', serif;
+  font-family: var(--font-heading);
 }
 
 .footerColumn p {
@@ -44,13 +44,43 @@
 }
 
 .footerLinks a {
-  color: var(--color-text-light);
+  color: var(--color-text);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footerLinks a:hover {
-  color: var(--color-saffron);
+  color: var(--color-accent);
+}
+
+.contactForm .form-group {
+  margin-bottom: 1rem;
+}
+
+.contactForm .form-control {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  color: #333;
+}
+
+.contactForm .btn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contactForm .btn:hover {
+  background-color: var(--color-coral);
 }
 
 .socialIcons {
@@ -61,17 +91,17 @@
 }
 
 .socialIcons a {
-  color: var(--color-text-light);
+  color: var(--color-text);
   font-size: 1.5rem;
   transition: color 0.3s ease;
 }
 
 .socialIcons a:hover {
-  color: var(--color-saffron);
+  color: var(--color-accent);
 }
 
 .footerBottom {
-  border-top: 1px solid var(--color-ash);
+  border-top: 1px solid var(--color-gray);
   padding-top: 1rem;
 }
 

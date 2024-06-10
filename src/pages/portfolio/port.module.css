@@ -1,100 +1,54 @@
-/* contact.module.css */
-.contact {
+.portfolio {
   padding: 2rem;
   margin-top: 4.5rem;
   text-align: center;
-  background: var(--color-glaucous);
+  background: var(--color-ash);
   color: var(--color-text-light);
   min-height: calc(100vh - 8.5rem);
 }
 
-.sectionTitle {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-  font-family: 'DM Serif Display', serif;
-  line-height: 1.2;
-}
-
-.contactForm {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.contactForm .form-group {
-  margin-bottom: 1rem;
-}
-
-.contactForm .form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.contactForm .form-control {
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff;
-  color: #333;
-}
-
-.contactForm .btn {
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 4px;
-  background-color: var(--color-saffron);
+.projectCard {
+  background: var(--color-gray);
   color: var(--color-text-light);
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.contactForm .btn:hover {
-  background-color: var(--color-coral);
-}
-
-.contactInfo {
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
-  margin-top: 2rem;
+  margin-bottom: 1.5rem;
 }
 
-.contactInfo p {
+.projectCard h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.projectCard p {
   font-size: 1rem;
   margin-bottom: 1rem;
-  line-height: 1.75;
 }
 
-.socialIcons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.socialIcons a {
-  color: var(--color-text-light);
-  font-size: 1.5rem;
+.projectCard a {
+  color: var(--color-saffron);
+  text-decoration: none;
+  font-weight: bold;
   transition: color 0.3s ease;
 }
 
-.socialIcons a:hover {
-  color: var(--color-saffron);
+.projectCard a:hover {
+  color: var(--color-coral);
+  text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-  .contactForm,
-  .contactInfo {
-    text-align: center;
-  }
+.projectCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
 
-  .socialIcons {
-    justify-content: center;
-  }
+.calendar {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

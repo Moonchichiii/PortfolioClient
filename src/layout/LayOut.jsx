@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import NavBar from '../components/navbar/NavBar';
+import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
+import Sidebar from '../components/sidebar/Sidebar';
 import styles from './layout.module.css';
 
 function Layout({ children, onAuthClick }) {
@@ -9,15 +10,10 @@ function Layout({ children, onAuthClick }) {
 
   return (
     <div className={styles.layout}>
-      {!isAuthenticated && (
-        <header className={styles.header}>
-          <NavBar onAuthClick={onAuthClick} />
-        </header>
-      )}
+      <Header onAuthClick={onAuthClick} />
+      <Sidebar />
       <main className={styles.mainContent}>{children}</main>
-      <footer className={styles.footer}>
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 }
