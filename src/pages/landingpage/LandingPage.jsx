@@ -10,6 +10,7 @@ const Home = React.lazy(() => import('../home/Home'));
 const About = React.lazy(() => import('../about/About'));
 const Portfolio = React.lazy(() => import('../portfolio/Portfolio'));
 
+
 const sections = [
   { id: 'home', Component: Home },
   { id: 'about', Component: About },
