@@ -39,8 +39,7 @@ function Footer() {
                 <input
                   type="text"
                   className={styles.formControl}
-                  id="name"
-                  placeholder="Your Name"
+                  id="name"                  
                   name="name"
                   aria-required="true"
                   required
@@ -52,7 +51,6 @@ function Footer() {
                   type="email"
                   className={styles.formControl}
                   id="email"
-                  placeholder="Your Email"
                   name="email"
                   aria-required="true"
                   required

@@ -2,7 +2,6 @@ import React, { useEffect, useState, Suspense } from 'react';
 import { Link } from 'react-scroll';
 import { motion } from 'framer-motion';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
-import Header from '../../components/header/Header';
 import Footer from '../../components/footer/Footer';
 import Sidebar from '../../components/sidebar/Sidebar';
 import styles from './land.module.css';
@@ -19,7 +18,7 @@ const sections = [
 
 function LandingPage({ onAuthClick }) {
   const [visibleSections, setVisibleSections] = useState([]);
-  const [showHeader, setShowHeader] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -32,7 +31,7 @@ function LandingPage({ onAuthClick }) {
             ]);
           }
           if (entry.target.id === 'home' && entry.isIntersecting) {
-            setTimeout(() => setShowHeader(true), 500);
+            setTimeout(() => setShowSidebar(true), 500);
           }
         });
       },
@@ -58,8 +57,7 @@ function LandingPage({ onAuthClick }) {
 
   return (
     <div className={styles.landingPage}>
-      {showHeader && <Header onAuthClick={onAuthClick} />}
-      {showHeader && <Sidebar />}
+      {showSidebar && <Sidebar onAuthClick={onAuthClick} />}
       <div className={styles.hero}>
         <motion.h1
           className={styles.heroText}
@@ -109,4 +107,3 @@ function LandingPage({ onAuthClick }) {
 }
 
 export default LandingPage;
-

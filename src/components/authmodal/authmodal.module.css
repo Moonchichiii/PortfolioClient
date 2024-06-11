@@ -1,9 +1,28 @@
-.modal {
+.modalContent {
+  background: var(--color-primary) !important;
+  color: var(--color-white) !important;
+  border-radius: 8px !important;
+  border: none !important;
+}
 
+.modalHeader, .modalBody, .modalFooter {
+  background: var(--color-primary) !important;
+  color: var(--color-white) !important;
+}
+
+.modalTitle {
+  color: var(--color-white) !important;
+}
+
+.modalHeader .close {
+  color: var(--color-white) !important;
 }
 
 .authSwitch {
+  display: flex;
+  justify-content: center;
   text-align: center;
+  margin-top: 0.75rem;
 }
 
 .authSwitchButton {
@@ -11,30 +30,18 @@
   border: none;
   padding: 0;
   margin: 0;
-  color: var(--color-glaucous);
+  color: var(--color-saffron);
   cursor: pointer;
 }
 
 .authSwitchButton:hover {
-  color: var(--color-saffron);
+  color: var(--color-coral);
   text-decoration: underline;
 }
 
 .socialLogin {
   display: flex;
-  justify-content: space-around;
+  gap: 1rem;
+  justify-content: center;
   margin-top: 1rem;
-}
-
-.socialButton {
-  background-color: var(--color-saffron);
-  border: none;
-  color: var(--color-text-light);
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.socialButton:hover {
-  background-color: var(--color-coral);
 }

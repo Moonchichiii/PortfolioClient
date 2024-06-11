@@ -11,13 +11,13 @@ class ErrorBoundary extends React.Component {
     return { hasError: true, errorMessage: error.message };
   }
 
-  componentDidCatch(error, errorInfo) {
-    // You can handle error logging or reporting here if needed
+  componentDidCatch(error, errorInfo) {    
     console.error(error, errorInfo);
   }
 
   handleRetry = () => {
     this.setState({ hasError: false, errorMessage: '' });
+    window.location.href = '/';
   };
 
   render() {
@@ -29,7 +29,7 @@ class ErrorBoundary extends React.Component {
         <div>
           <h1>Something went wrong.</h1>
           <p>{errorMessage}</p>
-          <button type="button" onClick={this.handleRetry}>Retry</button>
+          <button type="button" onClick={this.handleRetry}>Return to Homepage</button>
         </div>
       );
     }

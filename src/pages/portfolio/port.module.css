@@ -3,13 +3,13 @@
   margin-top: 4.5rem;
   text-align: center;
   background: var(--color-ash);
-  color: var(--color-text-light);
+  color: var(--color-sea-salt-text);
   min-height: calc(100vh - 8.5rem);
 }
 
 .projectCard {
   background: var(--color-gray);
-  color: var(--color-text-light);
+  color: var(--color-sea-salt-text);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

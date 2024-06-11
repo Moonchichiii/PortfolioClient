@@ -1,7 +1,7 @@
 .landingPage {
   overflow-x: hidden;
   background-color: var(--color-primary);
-  color: var(--color-text);
+  color: var(--color-sea-salt-text);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -58,16 +58,6 @@
   100% { opacity: 1; }
 }
 
-/* Parallax Effect */
-.parallax {
-  height: 100vh;  
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background: linear-gradient(to bottom, var(--color-primary), var(--color-background));
-}
-
 .section {
   height: 100vh;
   display: flex;
@@ -89,7 +79,7 @@
 
 .sidebar {
   background: rgba(74, 74, 74, 0.8);
-  color: var(--color-text);
+  color: var(--color-sea-salt-text);
   padding: 1rem;
   box-sizing: border-box;
   overflow-y: auto;
@@ -112,7 +102,7 @@
 
 .footer {
   background: var(--color-gray);
-  color: var(--color-text);
+  color: var(--color-sea-salt-text);
   text-align: center;
   padding: 1rem;
   width: 100%;

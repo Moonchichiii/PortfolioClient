@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faBriefcase, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import styles from './sidebar.module.css';
 
-function Sidebar() {
+function Sidebar({ onAuthClick }) {
   return (
     <nav className={styles.sidebar}>
       <div className={styles.nav}>
@@ -20,6 +20,9 @@ function Sidebar() {
         <NavLink to="/contact" className={styles.navLink}>
           <FontAwesomeIcon icon={faEnvelope} /> Contact
         </NavLink>
+        <div className={styles.navLink} onClick={() => onAuthClick('login')}>
+          <FontAwesomeIcon icon={faUser} /> Account
+        </div>
       </div>
     </nav>
   );

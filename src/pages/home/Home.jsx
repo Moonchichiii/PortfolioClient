@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import styles from './Home.module.css';
+import styles from './home.module.css';
 
 function Home() {
   const [showIntroText, setShowIntroText] = useState(false);
@@ -34,9 +34,6 @@ function Home() {
     <div className={styles.home}>
       <div className={styles.container}>
         <section className={styles.heroSection}>
-          <div className={styles.imageBox}>
-            <img src="src/assets/images/about image test/pexels-luis-gomes-166706-546819.jpg" alt="Your description" />
-          </div>
           <div className={styles.textBox}>
             <h1 className={styles.title}>Welcome to My Portfolio</h1>
             <p className={styles.subtitle}>Showcasing my work and projects</p>

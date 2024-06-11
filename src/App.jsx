@@ -1,7 +1,6 @@
 import React, { Suspense, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoadingSpinner from './components/loadingspinner/LoadingSpinner';
-import Layout from './layout/Layout';
 import AuthModal from './components/authmodal/AuthModal';
 import ProtectedRoute from './routes/ProtectedRoute';
 import ErrorBoundary from './components/Common/ErrorBoundary';
@@ -39,9 +38,7 @@ function App() {
             element={
               <ProtectedRoute>
                 <ErrorBoundary>
-                  <Layout onAuthClick={handleShowAuthModal}>
-                    <Dashboard />
-                  </Layout>
+                  <Dashboard />
                 </ErrorBoundary>
               </ProtectedRoute>
             }

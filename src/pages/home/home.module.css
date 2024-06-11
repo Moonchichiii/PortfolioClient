@@ -10,20 +10,21 @@
 }
 
 .home {
-  padding: 1rem;  
-  color: var(--color-text-light);
+  padding: 1rem;
+  color: var(--color-sea-salt-text);
   background: linear-gradient(135deg, var(--color-saffron), var(--color-coral));
   min-height: calc(100vh - 8.5rem);
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 20px;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   max-width: 1200px;
   width: 100%;
   padding: 2rem;
@@ -33,20 +34,17 @@
 
 .heroSection {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  flex-direction: column;
   align-items: center;
-}
-
-.imageBox img {
-  max-width: 100%;
-  border-radius: 20px;
+  text-align: left;
+  width: 100%;
 }
 
 .textBox {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
 }
 
 .title, .subtitle, .button {
@@ -59,7 +57,7 @@
 
 .introSection > .introTitle, .introText {
   animation: slideUp 2s ease-out forwards;
-  animation-delay: 1s; 
+  animation-delay: 1s;
 }
 
 .introText {
@@ -76,7 +74,7 @@
 .subtitle {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  color: var(--color-text-light);
+  color: var(--color-sea-salt-text);
   line-height: 1.5;
 }
 
@@ -84,7 +82,7 @@
   padding: 1rem 2rem;
   font-size: 1rem;
   font-weight: 600;
-  color: var(--color-text-light);
+  color: var(--color-sea-salt-text);
   background-color: var(--color-jet);
   text-decoration: none;
   border-radius: 5px;
@@ -114,8 +112,7 @@
   }
 
   .container {
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    flex-direction: column;
   }
 
   .title {
