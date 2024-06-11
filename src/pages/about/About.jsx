@@ -9,19 +9,10 @@ function About() {
         <div className={styles.row}>
           <div className={styles.col}>
             <p className={styles.introText}>
-              I am a web developer with a passion for creating beautiful and
-              functional websites. My journey in web development started with a
-              love for design and an enthusiasm for coding. I enjoy bringing
-              ideas to life on the web, creating seamless user experiences and
-              visually appealing designs.
+              I am a passionate web developer with a keen eye for design and an enthusiasm for coding. My journey in web development began with a love for creating beautiful and functional websites. I take pride in bringing ideas to life on the web, ensuring seamless user experiences and visually appealing designs.
             </p>
             <p className={styles.introText}>
-              Through self-learning and practical application, I have acquired
-              substantial knowledge in HTML, CSS, JavaScript, and an
-              introduction to Python and Django for server-side programming. My
-              previous experience has taught me the importance of attention to
-              detail and independence, qualities that I now apply in web
-              development to create engaging and functional websites.
+              Through self-learning and practical application, I have honed my skills in HTML, CSS, JavaScript, and an introduction to Python and Django for server-side programming. My background in the culinary sector has instilled in me a meticulous attention to detail and a strong work ethic.
             </p>
           </div>
           <div className={styles.col}>
@@ -29,10 +20,7 @@ function About() {
             <ul className={styles.skillList}>
               <li>HTML5, CSS3, JavaScript, React</li>
               <li>Python, Django for server-side programming</li>
-              <li>
-                Git for version control, VS Code for development, Chrome
-                DevTools for debugging
-              </li>
+              <li>Git for version control, VS Code for development, Chrome DevTools for debugging</li>
             </ul>
             <h3 className={styles.subTitle}>Professional Experience</h3>
             <ul className={styles.experienceList}>
@@ -56,10 +44,7 @@ function About() {
           <div className={styles.col}>
             <div className={styles.skillCard}>
               <h3>JavaScript</h3>
-              <p>
-                Proficient in adding interactivity and functionality to
-                websites.
-              </p>
+              <p>Proficient in adding interactivity and functionality to websites.</p>
             </div>
           </div>
         </div>

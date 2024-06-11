@@ -158,7 +158,6 @@ button:hover {
   position: relative;
 }
 
-/* Media Queries for Mobile Responsiveness */
 @media (max-width: 768px) {
   .sidebar {
     width: 100%;

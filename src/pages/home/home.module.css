@@ -51,19 +51,6 @@
   animation: slideUp 2s ease-out forwards;
 }
 
-.introSection {
-  margin-top: 3rem;
-}
-
-.introSection > .introTitle, .introText {
-  animation: slideUp 2s ease-out forwards;
-  animation-delay: 1s;
-}
-
-.introText {
-  animation-delay: 2s;
-}
-
 .title {
   font-family: 'DM Serif Display', serif;
   font-size: 3rem;
@@ -87,23 +74,12 @@
   text-decoration: none;
   border-radius: 5px;
   transition: background-color 0.3s ease;
+  align-self: center;
+  margin-top: 2rem;
 }
 
 .button:hover {
   background-color: var(--color-gray);
-}
-
-.introTitle {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  line-height: 1.4;
-}
-
-.introText {
-  font-size: 1rem;
-  margin-bottom: 2rem;
-  line-height: 1.75;
-  opacity: 0;
 }
 
 @media (max-width: 768px) {
@@ -126,17 +102,6 @@
   .button {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
-  }
-
-  .introSection {
-    margin-top: 1.5rem;
-  }
-
-  .introTitle {
-    font-size: 1.5rem;
-  }
-
-  .introText {
-    font-size: 0.875rem;
+    margin-top: 1rem;
   }
 }
