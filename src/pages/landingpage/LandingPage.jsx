@@ -6,9 +6,11 @@ import Footer from '../../components/footer/Footer';
 import Sidebar from '../../components/sidebar/Sidebar';
 import styles from './land.module.css';
 
+
+const Portfolio = React.lazy(() => import('../portfolio/Portfolio'));
 const Home = React.lazy(() => import('../home/Home'));
 const About = React.lazy(() => import('../about/About'));
-const Portfolio = React.lazy(() => import('../portfolio/Portfolio'));
+
 
 
 const sections = [
