@@ -8,11 +8,10 @@ import styles from './land.module.css';
 
 
 
-
-
 const Home = React.lazy(() => import('../home/Home'));
 const About = React.lazy(() => import('../about/About'));
 
+const Portfolio = React.lazy(() => import('../port/Port'));
 
 
 const sections = [
