@@ -15,12 +15,10 @@ const useAuth = () => {
 
   const login = async (identifier, password, onSuccess) => {
     try {
-      console.log('Logging in...');
       const response = await axiosInstance.post('auth/login/', {
         username: identifier,
         password,
       });
-      console.log('Login response:', response.data);
       const { user, access_token } = response.data;
       dispatch(setUser({ user, token: access_token }));
       saveTokens(access_token);
@@ -39,9 +37,7 @@ const useAuth = () => {
 
   const register = async (userData, onSuccess) => {
     try {
-      console.log('Registering...');
       const response = await axiosInstance.post('auth/register/', userData);
-      console.log('Registration response:', response.data);
       const { user, access_token } = response.data;
       dispatch(setUser({ user, token: access_token }));
       saveTokens(access_token);
@@ -58,7 +54,6 @@ const useAuth = () => {
 
   const logout = async () => {
     try {
-      console.log('Logging out...');
       await axiosInstance.post('auth/logout/');
       dispatch(clearUser());
       navigate('/');

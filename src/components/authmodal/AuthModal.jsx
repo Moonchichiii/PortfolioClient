@@ -47,11 +47,7 @@ function AuthModal({ initialType = 'login', show, handleClose }) {
         </Suspense>
       </Modal.Body>
       <Modal.Footer className={styles.modalFooter}>
-        <div className="d-flex flex-column align-items-center w-100">
-          <div className={styles.socialLogin}>
-            {/* <Button variant="outline-primary">Sign in with Google</Button> */}
-            {/* <Button variant="outline-primary">Sign in with Facebook</Button> */}
-          </div>
+        <div className="d-flex flex-column align-items-center w-100">          
           <div className={styles.authSwitch}>
             {formType === 'login' ? (
               <span>
