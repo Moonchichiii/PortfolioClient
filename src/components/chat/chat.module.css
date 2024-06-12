@@ -1,95 +1,124 @@
 .chatContainer {
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    gap: 20px;
-    width: 100%;
-    max-width: 900px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid var(--color-gray);
-    border-radius: 5px;
-    background: var(--color-white);
-  }
-  
-  .chatArea {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .messageContainer {
-    flex: 1;
-    overflow-y: auto;
-    padding: 10px;
-    border-bottom: 1px solid var(--color-gray);
-  }
-  
-  .message {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-    background: var(--color-luxurious-neutrals);
-  }
-  
-  .myMessage {
-    background: var(--color-pearlescence);
-    align-self: flex-end;
-  }
-  
-  .avatar {
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-    margin-right: 10px;
-  }
-  
-  .inputContainer {
-    display: flex;
-    padding: 10px 0;
-  }
-  
-  input {
-    flex: 1;
-    padding: 10px;
-    border: 1px solid var(--color-gray);
-    border-radius: 5px;
-  }
-  
-  button {
-    margin-left: 10px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background: var(--color-oceanic-color-waves);
-    color: var(--color-white);
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background: var(--color-industrial-after-dark);
-  }
-  
-  .onlineUsers {
-    background: var(--color-bright-bubblegum);
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  .onlineUsers ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .onlineUser {
-    display: flex;
-    align-items: center;
-    padding: 5px 0;
-  }
-  
-  .onlineUser img {
-    margin-right: 10px;
-  }
-  
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  height: calc(100vh - 200px); 
+}
+
+.chatArea {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+}
+
+.messageContainer {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.myMessage {
+  background: rgba(255, 255, 255, 0.3);
+  align-self: flex-end;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.inputContainer {
+  display: flex;
+  padding: 10px 0;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 10px;
+}
+
+input {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+button {
+  margin-left: 10px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 10px;
+  background: var(--color-oceanic-color-waves);
+  color: var(--color-white);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+button:hover {
+  background: var(--color-industrial-after-dark);
+}
+
+.onlineUsers {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+}
+
+.onlineUsers ul {
+  list-style: none;
+  padding: 0;
+}
+
+.onlineUser {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.onlineUser img {
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}

@@ -5,7 +5,7 @@ import styles from './footer.module.css';
 
 function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} id='footer'>
       <div className="container">
         <div className={styles.footerContent}>
           <div className={styles.footerColumn}>

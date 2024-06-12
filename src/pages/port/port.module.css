@@ -2,20 +2,25 @@
   padding: 2rem;
   margin-top: 4.5rem;
   text-align: center;
-  background: var(--color-ash);
+  background: url('src/assets/images/portbkg.webp') no-repeat fixed;
+  background-size: cover;
   color: var(--color-sea-salt-text);
   min-height: calc(100vh - 8.5rem);
+  height: 100dvh;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .projectCard {
-  background: var(--color-gray);
+  background: rgba(255, 255, 255, 0.1); 
   color: var(--color-sea-salt-text);
   padding: 1.5rem;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
   margin-bottom: 1.5rem;
+  
 }
 
 .projectCard h3 {
@@ -43,7 +48,7 @@
 
 .projectCard:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
 }
 
 .calendar {

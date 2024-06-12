@@ -42,6 +42,16 @@ function Home() {
             </NavLink>
           </div>
         </section>
+        <section className={styles.additionalSection}>
+          <div className={styles.card}>
+            <h2>About Me</h2>
+            <p>I am a passionate web developer with a keen eye for design and an enthusiasm for coding. My journey in web development began with a love for creating beautiful and functional websites.</p>
+          </div>
+          <div className={styles.card}>
+            <h2>Contact Me</h2>
+            <p>Need help with a project or want to discuss opportunities? Feel free to reach out via the contact page or through direct chat for assistance.</p>
+          </div>
+        </section>
       </div>
     </div>
   );

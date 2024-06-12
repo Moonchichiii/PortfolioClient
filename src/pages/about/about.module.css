@@ -1,38 +1,70 @@
 .about {
-  padding: 2rem;
-  background: var(--color-primary);
-  color: var(--color-sea-salt-text);
+  position: relative;
+  padding: 1rem;
+  color: var(--main-background-color);
+  background: url('src/assets/images/aboutmebkg.webp') no-repeat fixed;
+  background-size: cover;
   min-height: calc(100vh - 8.5rem);
-  text-align: center;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  height: 100dvh;
+  animation: fadeIn 2s ease-in;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;  
+  z-index: 1;
+}
+
+.about .content {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
-}
-
-.sectionTitle {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  padding: 2rem;
 }
 
 .introText {
   font-size: 1rem;
   line-height: 1.75;
   margin-bottom: 1rem;
+  color: var(--about-paragraph-color);
+  text-align: left;
 }
 
 .subTitle {
   font-size: 1.5rem;
   margin-top: 2rem;
   margin-bottom: 1rem;
+  color: var(--about-heading-color);
 }
 
 .skillList,
-.experienceList {
+.experienceList,
+.educationList,
+.projectList {
   list-style: none;
   padding-left: 0;
+  text-align: left;
 }
 
 .row {
@@ -52,32 +84,42 @@
 }
 
 .skillCard {
-  background: var(--color-gray);
   padding: 1rem;
   border-radius: 8px;
   margin-top: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skillCardHtml {
+  background-color: var(--pastel-yellow);
+  color: var(--main-background-color);
+}
+
+.skillCardCss {
+  background-color: var(--pastel-orange);
+  color: var(--color-black);
+}
+
+.skillCardJs {
+  background-color: var(--pastel-blue);
+  color: var(--color-black);
 }
 
 .skillCard h3 {
   margin-bottom: 0.5rem;
   font-size: 1.25rem;
+  color: var(--main-background-color);
 }
 
 .skillCard p {
   margin-bottom: 0;
   font-size: 1rem;
   line-height: 1.75;
+  color: var(--main-background-color);
 }
 
 @media (max-width: 768px) {
-  .sectionTitle {
-    font-size: 2rem;
-  }
-
-  .introText {
-    font-size: 0.9rem;
-  }
-
   .subTitle {
     font-size: 1.25rem;
   }
@@ -88,5 +130,9 @@
 
   .skillCard h3 {
     font-size: 1.15rem;
+  }
+
+  .row {
+    flex-direction: column;
   }
 }

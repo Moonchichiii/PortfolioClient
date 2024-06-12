@@ -3,8 +3,6 @@ import {
   Table,
   Button,
   Container,
-  Row,
-  Col,
   Modal,
   Form,
   Alert,
@@ -25,7 +23,11 @@ function Projects() {
   const fetchProjects = async () => {
     try {
       const response = await axiosInstance.get('portfolio/');
-      setProjects(response.data);
+      if (Array.isArray(response.data)) {
+        setProjects(response.data);
+      } else {
+        setProjects([]);
+      }
     } catch (error) {
       console.error('Error fetching projects:', error);
     }
@@ -65,12 +67,12 @@ function Projects() {
 
   return (
     <Container className={styles.projects}>
-      <Row>
-        <Col>
-          <h2>Projects</h2>
-          <Button variant="primary" onClick={handleShow}>
-            Add Project
-          </Button>
+      <div className={styles.formContainer}>
+        <h2>Projects</h2>
+        <Button variant="primary" onClick={handleShow}>
+          Add Project
+        </Button>
+        {projects.length > 0 ? (
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -87,8 +89,10 @@ function Projects() {
               ))}
             </tbody>
           </Table>
-        </Col>
-      </Row>
+        ) : (
+          <p>No projects available</p>
+        )}
+      </div>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>

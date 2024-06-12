@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Form, Button, Container, Row, Col, Alert } from 'react-bootstrap';
+import { Form, Button, Container, Alert } from 'react-bootstrap';
 import { axiosMultipart } from '../../api/ApiConfig';
 import { setUser } from '../auth/authSlice';
 import styles from './profile.module.css';
@@ -59,57 +59,55 @@ function Profile() {
 
   return (
     <Container className={styles.profile}>
-      <Row>
-        <Col>
-          <h2>Profile</h2>
-          <Form onSubmit={handleSubmit}>
-            {generalError && <Alert variant="danger">{generalError}</Alert>}
-            <Form.Group controlId="formBio">
-              <Form.Label>Bio</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter bio"
-                name="bio"
-                value={formData.bio}
-                onChange={handleChange}
-                isInvalid={!!fieldErrors.bio}
-              />
-              <Form.Control.Feedback type="invalid">
-                {fieldErrors.bio}
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group controlId="formLocation">
-              <Form.Label>Location</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter location"
-                name="location"
-                value={formData.location}
-                onChange={handleChange}
-                isInvalid={!!fieldErrors.location}
-              />
-              <Form.Control.Feedback type="invalid">
-                {fieldErrors.location}
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Form.Group controlId="formAvatar">
-              <Form.Label>Profile Image</Form.Label>
-              <Form.Control
-                type="file"
-                name="avatar"
-                onChange={handleFileChange}
-                isInvalid={!!fieldErrors.avatar}
-              />
-              <Form.Control.Feedback type="invalid">
-                {fieldErrors.avatar}
-              </Form.Control.Feedback>
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Save Changes
-            </Button>
-          </Form>
-        </Col>
-      </Row>
+      <div className={styles.formContainer}>
+        <h2>Profile</h2>
+        <Form onSubmit={handleSubmit}>
+          {generalError && <Alert variant="danger">{generalError}</Alert>}
+          <Form.Group controlId="formBio">
+            <Form.Label>Bio</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter bio"
+              name="bio"
+              value={formData.bio}
+              onChange={handleChange}
+              isInvalid={!!fieldErrors.bio}
+            />
+            <Form.Control.Feedback type="invalid">
+              {fieldErrors.bio}
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="formLocation">
+            <Form.Label>Location</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter location"
+              name="location"
+              value={formData.location}
+              onChange={handleChange}
+              isInvalid={!!fieldErrors.location}
+            />
+            <Form.Control.Feedback type="invalid">
+              {fieldErrors.location}
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Form.Group controlId="formAvatar">
+            <Form.Label>Profile Image</Form.Label>
+            <Form.Control
+              type="file"
+              name="avatar"
+              onChange={handleFileChange}
+              isInvalid={!!fieldErrors.avatar}
+            />
+            <Form.Control.Feedback type="invalid">
+              {fieldErrors.avatar}
+            </Form.Control.Feedback>
+          </Form.Group>
+          <Button variant="primary" type="submit">
+            Save Changes
+          </Button>
+        </Form>
+      </div>
     </Container>
   );
 }
