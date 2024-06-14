@@ -13,7 +13,7 @@ const ChatBot = () => {
     
     const fetchCsrfToken = async () => {
       try {
-        const res = await axiosInstance.get('/api/chat/csrf/');
+        const res = await axiosInstance.get('chat/csrf/');
         setCsrfToken(res.data.csrfToken);
       } catch (error) {
         console.error('Error fetching CSRF token:', error);
@@ -26,7 +26,7 @@ const ChatBot = () => {
   const handleSendMessage = async () => {
     try {
       const res = await axiosInstance.post(
-        '/api/chat/chat/',
+        'chat/chat/',
         { message },
         {
           headers: {
