@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../../api/ApiConfig';
 import styles from './ChatBot.module.css';
 import chatbotImage from '../../assets/images/chatt.webp';
-import { fetchCsrfToken } from '../../hooks/useChatBot';
-
 
 const ChatBot = () => {
   const [message, setMessage] = useState('');
@@ -12,12 +10,17 @@ const ChatBot = () => {
   const [csrfToken, setCsrfToken] = useState('');
 
   useEffect(() => {
-    const getCsrf = async () => {
-      const token = await fetchCsrfToken();
-      setCsrfToken(token);
+    
+    const fetchCsrfToken = async () => {
+      try {
+        const res = await axiosInstance.get('/api/chat/csrf/');
+        setCsrfToken(res.data.csrfToken);
+      } catch (error) {
+        console.error('Error fetching CSRF token:', error);
+      }
     };
 
-    getCsrf();
+    fetchCsrfToken();
   }, []);
 
   const handleSendMessage = async () => {
@@ -27,7 +30,7 @@ const ChatBot = () => {
         { message },
         {
           headers: {
-            'X-CSRFToken': csrfToken,
+            'X-CSRFToken': csrfToken
           }
         }
       );
