@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background: url('src/assets/images/dashbkg.webp') no-repeat center center fixed;
+  background: url('https://res.cloudinary.com/dakjlrean/image/upload/v1718380533/wld7j3xxge9hflcupfzw.webp') no-repeat center center fixed;
   background-size: cover;
 }
 

@@ -36,7 +36,7 @@
 .home {
   padding: 1rem;
   color: var(--main-background-color);
-  background: url('src/assets/images/homesectionbkg.webp') no-repeat center center fixed;
+  background: url('https://res.cloudinary.com/dakjlrean/image/upload/v1718380531/kwiibpreyx4ztb4bzja7.webp') no-repeat center center fixed;
   background-size: cover;
   min-height: calc(100vh - 1.5rem);
   overflow: hidden;

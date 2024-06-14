@@ -2,7 +2,7 @@
   padding: 2rem;
   margin-top: 4.5rem;
   text-align: center;
-  background: url('src/assets/images/portbkg.webp') no-repeat center center fixed;
+  background: url('https://res.cloudinary.com/dakjlrean/image/upload/v1718380528/ado6aoswdinw7wnkkk3h.webp') no-repeat center center fixed;
   background-size: cover;
   color: var(--color-sea-salt-text);
   min-height: calc(100vh - 8.5rem);
