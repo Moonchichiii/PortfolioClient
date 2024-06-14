@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 import styles from './footer.module.css';
@@ -18,16 +19,16 @@ function Footer() {
             <h3>Quick Links</h3>
             <ul className={styles.footerLinks}>
               <li>
-                <a href="/home">Home</a>
+                <Link to="home" smooth={true} duration={500} offset={-60}>Home</Link>
               </li>
               <li>
-                <a href="/about">About</a>
+                <Link to="about" smooth={true} duration={500} offset={-60}>About</Link>
               </li>
               <li>
-                <a href="/portfolio">Portfolio</a>
+                <Link to="portfolio" smooth={true} duration={500} offset={-60}>Portfolio</Link>
               </li>
               <li>
-                <a href="/contact">Contact</a>
+                <Link to="contact" smooth={true} duration={500} offset={-60}>Contact</Link>
               </li>
             </ul>
           </div>
@@ -104,3 +105,4 @@ function Footer() {
 }
 
 export default Footer;
+

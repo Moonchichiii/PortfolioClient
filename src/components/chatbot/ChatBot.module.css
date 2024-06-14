@@ -1,0 +1,142 @@
+.chatbotContainer {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chatContainer {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-width: 320px;
+  width: 90%;
+  animation: slideUp 0.5s ease-out;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: 1999; /* Ensure it is behind the chatbot image */
+}
+
+.chatContainer.visible {
+  display: flex;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.chatbotImage {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.chatResponse {
+  margin-bottom: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: var(--color-sea-salt-text);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
+}
+
+.chatBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.chatBox input {
+  padding: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: var(--color-sea-salt-text);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chatBox button {
+  padding: 10px;
+  background: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--color-sea-salt-text);
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.chatBox button:hover {
+  background: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.tooltipContainer {
+  --background: #333333;
+  --color: #e8e8e8;
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  z-index: 2001;
+}
+
+.tooltip {
+  position: absolute;
+  top: -100%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.3em 0.6em;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  background: var(--background);
+  z-index: -1;
+  border-radius: 8px;
+  scale: 0;
+  transform-origin: 0 0;
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 16px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  bottom: -0.2em;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  background: var(--background);
+}
+
+.tooltipContainer:hover .tooltip {
+  top: -120%;
+  opacity: 1;
+  pointer-events: auto;
+  scale: 1;
+}
+
+.tooltipContainer:hover .chatbotImage {
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+}

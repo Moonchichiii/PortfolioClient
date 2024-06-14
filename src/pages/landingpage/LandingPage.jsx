@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
 import Footer from '../../components/footer/Footer';
 import Sidebar from '../../components/sidebar/Sidebar';
+import ChatBot from '../../components/chatbot/ChatBot'; 
 import styles from './land.module.css';
 
 const Home = React.lazy(() => import('../home/Home'));
@@ -19,6 +20,7 @@ const sections = [
 function LandingPage({ onAuthClick }) {
   const [visibleSections, setVisibleSections] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
+  const [showChatBot, setShowChatBot] = useState(false); 
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -31,7 +33,10 @@ function LandingPage({ onAuthClick }) {
             ]);
           }
           if (entry.target.id === 'home' && entry.isIntersecting) {
-            setTimeout(() => setShowSidebar(true), 500);
+            setTimeout(() => {
+              setShowSidebar(true);
+              setShowChatBot(true); 
+            }, 500);
           }
         });
       },
@@ -58,6 +63,7 @@ function LandingPage({ onAuthClick }) {
   return (
     <div className={styles.landingPage}>
       {showSidebar && <Sidebar onAuthClick={onAuthClick} />}
+      {showChatBot && <ChatBot />} 
       <div className={styles.hero}>
         <motion.h1
           className={styles.heroText}

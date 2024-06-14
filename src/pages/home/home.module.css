@@ -129,6 +129,7 @@
 .card h2 {
   color: var(--main-background-color);
 }
+
 @media (max-width: 768px) {
   .home {
     padding: 1rem;

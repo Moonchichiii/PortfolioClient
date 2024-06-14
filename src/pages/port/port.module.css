@@ -2,25 +2,24 @@
   padding: 2rem;
   margin-top: 4.5rem;
   text-align: center;
-  background: url('src/assets/images/portbkg.webp') no-repeat fixed;
+  background: url('src/assets/images/portbkg.webp') no-repeat center center fixed;
   background-size: cover;
   color: var(--color-sea-salt-text);
   min-height: calc(100vh - 8.5rem);
   height: 100dvh;
   border-radius: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Add this line */
 }
 
 .projectCard {
-  background: rgba(255, 255, 255, 0.1); 
+  background: rgba(255, 255, 255, 0.1);
   color: var(--color-sea-salt-text);
   padding: 1.5rem;
   border-radius: 8px;
-  
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-align: left;
   margin-bottom: 1.5rem;
-  
 }
 
 .projectCard h3 {
@@ -61,6 +60,9 @@
 @media (max-width: 768px) {
   .portfolio {
     padding: 1rem;
+    background-attachment: scroll;
+    min-height: 100vh; 
+    overflow-y: auto; 
   }
 
   .projectCard {
@@ -73,5 +75,19 @@
 
   .projectCard p {
     font-size: 0.875rem;
+  }
+
+  .row {
+    flex-direction: column;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    overflow-y: auto;
+  }
+
+  .calendar {
+    display: none; 
   }
 }
