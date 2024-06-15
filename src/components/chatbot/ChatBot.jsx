@@ -66,7 +66,7 @@ const ChatBot = () => {
               type="text"
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="Type your message..."
+              placeholder="Ask anything..."
               className={styles.chatInput}
             />
             <button onClick={handleSendMessage} className={styles.chatButton}>

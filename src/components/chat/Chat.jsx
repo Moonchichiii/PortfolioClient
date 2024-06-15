@@ -28,7 +28,7 @@ function Chat() {
       if (data.type === 'message') {
         setMessages((prevMessages) => [...prevMessages, data.message]);
       } else if (data.type === 'online_users') {
-        setOnlineUsers(data.users);
+        setOnlineUsers(Array.isArray(data.users) ? data.users : []);
       }
     };
     
