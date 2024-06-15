@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
 import { axiosMultipart } from '../../api/ApiConfig';
 import { setUser } from '../auth/authSlice';
-import styles from './settings.module.css';
+import styles from './profile.module.css';
 
 function Settings() {
   const { user } = useSelector((state) => state.auth);
