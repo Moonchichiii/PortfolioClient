@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
-import styles from './error.module.css'; 
+import { useNavigate } from 'react-router-dom';
+import styles from './error.module.css';
 
-class ErrorBoundary extends React.Component {
+class ErrorBoundary extends Component {
   constructor(props) {
     super(props);
     this.state = { hasError: false, errorMessage: '' };
@@ -19,9 +19,9 @@ class ErrorBoundary extends React.Component {
   }
 
   handleRetry = () => {
-    const { history } = this.props;
+    const { navigate } = this.props;
     this.setState({ hasError: false, errorMessage: '' });
-    history.goBack();
+    navigate(-1);
   };
 
   render() {
@@ -45,7 +45,12 @@ class ErrorBoundary extends React.Component {
 
 ErrorBoundary.propTypes = {
   children: PropTypes.node.isRequired,
-  history: PropTypes.object.isRequired,
+  navigate: PropTypes.func.isRequired,
 };
 
-export default withRouter(ErrorBoundary);
+const ErrorBoundaryWithNavigate = (props) => {
+  const navigate = useNavigate();
+  return <ErrorBoundary {...props} navigate={navigate} />;
+};
+
+export default ErrorBoundaryWithNavigate;
