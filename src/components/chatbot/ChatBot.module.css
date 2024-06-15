@@ -55,6 +55,9 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .chatBox {
@@ -72,6 +75,10 @@
   border-radius: 8px;
   margin-bottom: 8px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chatInput::placeholder {
+  color: var(--color-placeholder);
 }
 
 .chatBox button {

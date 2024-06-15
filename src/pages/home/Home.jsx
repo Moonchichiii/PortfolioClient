@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-scroll';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import styles from './home.module.css';
 
 function Home() {
@@ -37,9 +39,9 @@ function Home() {
           <div className={styles.textBox}>
             <h1 className={styles.title}>Welcome to My Portfolio</h1>
             <p className={styles.subtitle}>Showcasing my work and projects</p>
-            <NavLink to="/portfolio" className={`${styles.button} button-primary`}>
-              View Projects
-            </NavLink>
+            <Link to="portfolioSection" smooth duration={500} offset={-60} className={`${styles.button} button-primary`}>
+              <FontAwesomeIcon icon={faBriefcase} /> View Projects
+            </Link>
           </div>
         </section>
         <section className={styles.additionalSection}>
