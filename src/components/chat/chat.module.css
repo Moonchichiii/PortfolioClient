@@ -11,7 +11,7 @@
   backdrop-filter: blur(20px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  height: calc(100vh - 200px);
+  height: calc(100vh - 200px); 
 }
 
 .chatArea {
@@ -140,10 +140,10 @@ button:hover {
 
   input {
     margin-bottom: 10px;
+    width: 100%;
   }
 
   button {
     width: 100%;
-    margin-left: 0;
   }
 }
