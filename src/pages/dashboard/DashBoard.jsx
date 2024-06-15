@@ -18,7 +18,7 @@ function Welcome() {
     const fetchOnlineUsers = async () => {
       try {
         const response = await axiosInstance.get('profiles/online/');
-        setOnlineUsers(response.data);
+        setOnlineUsers(Array.isArray(response.data) ? response.data : []);
       } catch (error) {
         setOnlineUsers([]);
       }
