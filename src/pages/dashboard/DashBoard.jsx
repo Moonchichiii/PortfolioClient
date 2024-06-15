@@ -65,7 +65,7 @@ function Dashboard() {
     <div className={styles.dashboard}>
       <aside className={styles.sidebar}>
         <nav className={styles.nav}>
-          <Link to="/">Home</Link>
+          <Link to="/dashboard">Home</Link>
           <Link to="projects">Projects</Link>
           <Link to="settings">Settings</Link>
           <Link to="chat">Chat</Link>
@@ -80,7 +80,7 @@ function Dashboard() {
             <Route path="projects" element={<Projects />} />
             <Route path="settings" element={<Settings />} />
             <Route path="chat" element={<Chat />} />
-            <Route path="/" element={<Welcome />} />
+            <Route path="/dashboard" element={<Welcome />} />
           </Routes>
         </Suspense>
       </main>
