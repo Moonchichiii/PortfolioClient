@@ -6,7 +6,7 @@ import styles from './footer.module.css';
 
 function Footer() {
   return (
-    <footer className={styles.footer} id='footer'>
+    <footer className={styles.footer} id="footer">
       <div className="container">
         <div className={styles.footerContent}>
           <div className={styles.footerColumn}>
@@ -25,7 +25,7 @@ function Footer() {
                 <Link to="about" smooth={true} duration={500} offset={-60}>About</Link>
               </li>
               <li>
-                <Link to="portfolio" smooth={true} duration={500} offset={-60}>Portfolio</Link>
+                <Link to="portfolioSection" smooth={true} duration={500} offset={-60}>Portfolio</Link>
               </li>
               <li>
                 <Link to="contact" smooth={true} duration={500} offset={-60}>Contact</Link>
@@ -105,4 +105,3 @@ function Footer() {
 }
 
 export default Footer;
-

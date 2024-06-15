@@ -16,7 +16,9 @@ const ChatBot = () => {
         const res = await axiosInstance.get('chat/csrf/');
         setCsrfToken(res.data.csrfToken);
       } catch (error) {
-        console.error('Error fetching CSRF token:', error);
+        if (process.env.NODE_ENV !== 'production') {
+          console.error('Error fetching CSRF token:', error);
+        }
       }
     };
 

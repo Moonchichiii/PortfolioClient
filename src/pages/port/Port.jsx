@@ -22,7 +22,7 @@ function Portfolio() {
   }, []);
 
   return (
-    <div className={styles.portfolio}>
+    <div className={styles.portfolio} id="portfolioSection">
       <div className="container">
         <h2>My Portfolio</h2>
         <div className="row">

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import { Link } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faBriefcase, faEnvelope } from '@fortawesome/free-solid-svg-icons';
@@ -26,7 +25,7 @@ function Sidebar({ onAuthClick }) {
           <Link to="about" smooth duration={500} offset={-60} className={styles.navLink}>
             <FontAwesomeIcon icon={faUser} /> About
           </Link>
-          <Link to="portfolio" smooth duration={500} offset={-60} className={styles.navLink}>
+          <Link to="portfolioSection" smooth duration={500} offset={-60} className={styles.navLink}>
             <FontAwesomeIcon icon={faBriefcase} /> Portfolio
           </Link>
           <Link to="footer" smooth duration={500} offset={-60} className={styles.navLink}>
@@ -46,7 +45,7 @@ function Sidebar({ onAuthClick }) {
             <Link to="about" smooth duration={500} offset={-60} className={styles.navLink} onClick={handleToggle}>
               <FontAwesomeIcon icon={faUser} /> About
             </Link>
-            <Link to="portfolio" smooth duration={500} offset={-60} className={styles.navLink} onClick={handleToggle}>
+            <Link to="portfolioSection" smooth duration={500} offset={-60} className={styles.navLink} onClick={handleToggle}>
               <FontAwesomeIcon icon={faBriefcase} /> Portfolio
             </Link>
             <Link to="footer" smooth duration={500} offset={-60} className={styles.navLink} onClick={handleToggle}>

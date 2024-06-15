@@ -14,8 +14,13 @@
   color: var(--color-white) !important;
 }
 
-.modalHeader .close {
+.modalHeader .btn-close {
   color: var(--color-white) !important;
+  opacity: 1 !important;
+}
+
+.modalHeader .btn-close:hover {
+  color: var(--color-coral) !important;
 }
 
 .authSwitch {
@@ -32,11 +37,12 @@
   margin: 0;
   color: var(--color-saffron);
   cursor: pointer;
+  text-decoration: none; 
 }
 
 .authSwitchButton:hover {
   color: var(--color-coral);
-  text-decoration: underline;
+  text-decoration: underline; 
 }
 
 .socialLogin {
@@ -44,4 +50,18 @@
   gap: 1rem;
   justify-content: center;
   margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    padding: 1rem;
+  }
+
+  .modalTitle {
+    font-size: 1.5rem;
+  }
+
+  .authSwitchButton {
+    font-size: 0.875rem;
+  }
 }

@@ -16,15 +16,14 @@
 
 .bars {
   width: 25px;
-  height: 3px; 
+  height: 3px;
   background-color: var(--color-accent);
   border-radius: 5px;
-  transition-duration: 0.3s;
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .transform1 {
-  transform: rotate(45deg);
-  transform-origin: center;
+  transform: rotate(45deg) translate(7px, 7px);
 }
 
 .transform2 {
@@ -32,8 +31,7 @@
 }
 
 .transform3 {
-  transform: rotate(-45deg);
-  transform-origin: center;
+  transform: rotate(-45deg) translate(7px, -8px);
 }
 
 .sidebarOffcanvas {

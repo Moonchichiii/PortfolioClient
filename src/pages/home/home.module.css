@@ -103,6 +103,7 @@
   transition: background-color 0.3s ease;
   align-self: center;
   margin-top: 2rem;
+  cursor: pointer;
 }
 
 .button:hover {

@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import styles from './ErrorBoundary.module.css'; 
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -11,13 +13,15 @@ class ErrorBoundary extends React.Component {
     return { hasError: true, errorMessage: error.message };
   }
 
-  componentDidCatch(error, errorInfo) {    
+  componentDidCatch(error, errorInfo) {
+    
     console.error(error, errorInfo);
   }
 
   handleRetry = () => {
+    const { history } = this.props;
     this.setState({ hasError: false, errorMessage: '' });
-    window.location.href = '/';
+    history.goBack();
   };
 
   render() {
@@ -26,10 +30,11 @@ class ErrorBoundary extends React.Component {
 
     if (hasError) {
       return (
-        <div>
+        <div className={styles.errorContainer}>
           <h1>Something went wrong.</h1>
           <p>{errorMessage}</p>
-          <button type="button" onClick={this.handleRetry}>Return to Homepage</button>
+          <button type="button" onClick={this.handleRetry}>Return to Previous Page</button>
+          <img src="https://res.cloudinary.com/dakjlrean/image/upload/v1718437131/fu56rvqkfjsdkttj5dnq.webp" alt="Funny" className={styles.errorImage} />
         </div>
       );
     }
@@ -40,6 +45,7 @@ class ErrorBoundary extends React.Component {
 
 ErrorBoundary.propTypes = {
   children: PropTypes.node.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
-export default ErrorBoundary;
+export default withRouter(ErrorBoundary);

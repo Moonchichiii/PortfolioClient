@@ -15,7 +15,9 @@ export function CurrentUserProvider({ children }) {
       const response = await axiosInstance.get('profiles/me/');
       setProfile(response.data);
     } catch (error) {
-      console.error('Error fetching profile:', error);
+      if (process.env.NODE_ENV !== 'production') {
+        console.error('Error fetching profile:', error);
+      }
     }
   };
 
@@ -40,7 +42,9 @@ export function CurrentUserProvider({ children }) {
               })
             );
           } catch (refreshError) {
-            console.error('Token refresh failed:', refreshError);
+            if (process.env.NODE_ENV !== 'production') {
+              console.error('Token refresh failed:', refreshError);
+            }
             dispatch(clearUser());
           }
         }
@@ -65,7 +69,9 @@ export function CurrentUserProvider({ children }) {
                 })
               );
             } catch (refreshError) {
-              console.error('Token refresh failed:', refreshError);
+              if (process.env.NODE_ENV !== 'production') {
+                console.error('Token refresh failed:', refreshError);
+              }
               dispatch(clearUser());
             }
           }

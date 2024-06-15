@@ -1,5 +1,4 @@
 import React, { Suspense, useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { axiosInstance } from '../../api/ApiConfig';
 import LoadingSpinner from '../../components/loadingspinner/LoadingSpinner';
@@ -8,23 +7,18 @@ import useAuth from '../../hooks/useAuth';
 import { useCurrentUser } from '../../context/CurrentUserContext';
 import styles from './dash.module.css';
 
-const Profile = React.lazy(() => import('../profile/Profile'));
 const Projects = React.lazy(() => import('../profile/Projects'));
 const Settings = React.lazy(() => import('../profile/Settings'));
 
 function Welcome() {
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useCurrentUser();
   const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
     const fetchOnlineUsers = async () => {
       try {
         const response = await axiosInstance.get('profiles/online/');
-        if (Array.isArray(response.data)) {
-          setOnlineUsers(response.data);
-        } else {
-          setOnlineUsers([]);
-        }
+        setOnlineUsers(response.data);
       } catch (error) {
         setOnlineUsers([]);
       }
@@ -44,10 +38,9 @@ function Welcome() {
       <div className={styles.onlineUsers}>
         <h4>Online Users</h4>
         <ul>
-          {Array.isArray(onlineUsers) &&
-            onlineUsers.map((onlineUser) => (
-              <li key={onlineUser.id}>{onlineUser.username}</li>
-            ))}
+          {onlineUsers.map((onlineUser) => (
+            <li key={onlineUser.id}>{onlineUser.username}</li>
+          ))}
         </ul>
       </div>
     </div>
@@ -55,7 +48,6 @@ function Welcome() {
 }
 
 function Dashboard() {
-  const { user } = useSelector((state) => state.auth);
   const { logout } = useAuth();
   const { profile } = useCurrentUser();
   const navigate = useNavigate();
@@ -73,7 +65,7 @@ function Dashboard() {
     <div className={styles.dashboard}>
       <aside className={styles.sidebar}>
         <nav className={styles.nav}>
-          <Link to="profile">Profile</Link>
+          <Link to="/">Home</Link>
           <Link to="projects">Projects</Link>
           <Link to="settings">Settings</Link>
           <Link to="chat">Chat</Link>
@@ -85,7 +77,6 @@ function Dashboard() {
       <main className={styles.mainContent}>
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
-            <Route path="profile" element={<Profile />} />
             <Route path="projects" element={<Projects />} />
             <Route path="settings" element={<Settings />} />
             <Route path="chat" element={<Chat />} />

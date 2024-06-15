@@ -1,7 +1,7 @@
 .authFormContainer {
   max-width: 400px;
   margin: 2rem auto;
-  padding: 2rem;    
+  padding: 2rem;
   background: var(--color-primary);
   color: var(--color-sea-salt-text);
   border-radius: 8px;
@@ -121,4 +121,24 @@
 
 .authFormContainer .formDivider::after {
   margin-left: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .authFormContainer {
+    padding: 1rem;
+  }
+
+  .authFormContainer h2 {
+    font-size: 1.5rem;
+  }
+
+  .authFormContainer .buttonPrimary {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .authFormContainer .forgotPassword,
+  .authFormContainer .signupLink {
+    text-align: center;
+  }
 }

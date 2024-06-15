@@ -12,7 +12,7 @@ function Chat() {
 
   useEffect(() => {
     const socketUrl = process.env.NODE_ENV === 'production'
-      ? 'wss://your-production-url/ws/chat/'
+      ? process.env.REACT_APP_WEBSOCKET_URL
       : 'ws://localhost:8000/ws/chat/';
     
     const newSocket = new WebSocket(socketUrl);

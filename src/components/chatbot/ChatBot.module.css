@@ -21,7 +21,7 @@
   width: 90%;
   animation: slideUp 0.5s ease-out;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  z-index: 1999; /* Ensure it is behind the chatbot image */
+  z-index: 1999; 
 }
 
 .chatContainer.visible {
@@ -78,7 +78,7 @@
 }
 
 .chatInput::placeholder {
-  color: var(--color-placeholder);
+  color: var(--color-sea-salt-text);
 }
 
 .chatBox button {
