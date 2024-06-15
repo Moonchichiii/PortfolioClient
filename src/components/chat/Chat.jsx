@@ -11,16 +11,13 @@ function Chat() {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const socketUrl = process.env.NODE_ENV === 'production'
-      ? process.env.REACT_APP_WS_URL
-      : 'ws://localhost:8000/ws/chat/';
-    
+    const socketUrl = process.env.REACT_APP_WS_URL;
     const newSocket = new WebSocket(socketUrl);
-    
+
     newSocket.onopen = () => {
       console.log('WebSocket connection established');
     };
-    
+
     newSocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
       if (data.type === 'message') {
@@ -29,11 +26,11 @@ function Chat() {
         setOnlineUsers(Array.isArray(data.users) ? data.users : []);
       }
     };
-    
+
     newSocket.onclose = () => {
       console.log('WebSocket connection closed');
     };
-    
+
     setSocket(newSocket);
 
     return () => {

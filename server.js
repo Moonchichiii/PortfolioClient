@@ -1,26 +1,21 @@
 import express from 'express';
 import http from 'http';
-import { Server as socketIo } from 'socket.io';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import errorHandler from './errorhandler.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
 
 const app = express();
 const server = http.createServer(app);
-const io = new socketIo(server, {
-    cors: {
-        origin: process.env.FRONTEND_URL,
-        methods: ["GET", "POST"],
-        credentials: true
-    }
-});
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Use compression middleware
 app.use(compression());
@@ -32,9 +27,6 @@ app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
 }));
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'dist')));
@@ -48,6 +40,16 @@ const apiProxy = createProxyMiddleware('/api', {
 
 app.use('/api', apiProxy);
 
+// Proxy WebSocket requests to the Django backend
+const wsProxy = createProxyMiddleware('/ws', {
+    target: process.env.VITE_BASE_URL,
+    ws: true,
+    changeOrigin: true,
+    secure: true,
+});
+
+app.use('/ws', wsProxy);
+
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
@@ -55,19 +57,6 @@ app.get('*', (req, res) => {
 
 // Use the error handler middleware
 app.use(errorHandler);
-
-// Socket.IO setup
-io.on('connection', (socket) => {
-    console.log('New client connected');
-
-    socket.on('sendMessage', (message) => {
-        io.emit('message', message);
-    });
-
-    socket.on('disconnect', () => {
-        console.log('Client disconnected');
-    });
-});
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
