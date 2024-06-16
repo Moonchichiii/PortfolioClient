@@ -12,7 +12,6 @@ const useAuth = () => {
   const saveTokens = (access_token) => {
     axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
   };
-  
 
   const login = async (identifier, password, onSuccess) => {
     try {
@@ -29,9 +28,7 @@ const useAuth = () => {
       return true;
     } catch (err) {
       console.error('Login error:', err);
-      setError(
-        err.response?.data || 'Login failed. Please check your credentials.',
-      );
+      setError(err.response?.data || 'Login failed. Please check your credentials.');
       return false;
     }
   };

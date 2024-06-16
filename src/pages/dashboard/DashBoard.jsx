@@ -11,7 +11,7 @@ const Projects = React.lazy(() => import('../profile/Projects'));
 const Settings = React.lazy(() => import('../profile/Settings'));
 
 function Welcome() {
-  const { user } = useCurrentUser();
+  const { profile } = useCurrentUser();
   const [onlineUsers, setOnlineUsers] = useState([]);
 
   useEffect(() => {
@@ -30,10 +30,10 @@ function Welcome() {
   return (
     <div className={styles.welcome}>
       <div className={styles.profile}>
-        <img src={user?.avatar || '/default-avatar.png'} alt="Profile" />
-        <h3>{user?.username}</h3>
-        <p>{user?.bio}</p>
-        <p>{user?.location}</p>
+        <img src={profile?.avatar || '/default-avatar.png'} alt="Profile" />
+        <h3>{profile?.username}</h3>
+        <p>{profile?.bio}</p>
+        <p>{profile?.location}</p>
       </div>
       <div className={styles.onlineUsers}>
         <h4>Online Users</h4>

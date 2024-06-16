@@ -34,12 +34,7 @@ export function CurrentUserProvider({ children }) {
             refresh: refresh_token,
           });
           axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
-          dispatch(
-            setUser({
-              user: response.data.user,
-              token: response.data.access,
-            })
-          );
+          dispatch(setUser({ user: response.data.user, token: response.data.access }));
         } catch (refreshError) {
           console.error('Token refresh failed:', refreshError);
           dispatch(clearUser());
@@ -55,16 +50,9 @@ export function CurrentUserProvider({ children }) {
             .find((row) => row.startsWith('jwt_refresh_token'))
             ?.split('=')[1];
           try {
-            const response = await axiosInstance.post('auth/token/refresh/', {
-              refresh: refresh_token,
-            });
+            const response = await axiosInstance.post('auth/token/refresh/', { refresh: refresh_token });
             axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
-            dispatch(
-              setUser({
-                user: response.data.user,
-                token: response.data.access,
-              })
-            );
+            dispatch(setUser({ user: response.data.user, token: response.data.access }));
           } catch (refreshError) {
             console.error('Token refresh failed:', refreshError);
             dispatch(clearUser());

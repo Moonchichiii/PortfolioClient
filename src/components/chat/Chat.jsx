@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './chat.module.css';
 
-function Chat() {
+function Chat({ roomName }) {
   const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
@@ -11,7 +11,7 @@ function Chat() {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const socketUrl = process.env.REACT_APP_WS_URL;
+    const socketUrl = `${process.env.REACT_APP_WS_URL}/ws/chat/${roomName}/`;
     const newSocket = new WebSocket(socketUrl);
 
     newSocket.onopen = () => {
@@ -20,8 +20,8 @@ function Chat() {
 
     newSocket.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      if (data.type === 'message') {
-        setMessages((prevMessages) => [...prevMessages, data.message]);
+      if (data.type === 'chat_message') {
+        setMessages((prevMessages) => [...prevMessages, { user: data.user, message: data.message }]);
       } else if (data.type === 'online_users') {
         setOnlineUsers(Array.isArray(data.users) ? data.users : []);
       }
@@ -36,7 +36,7 @@ function Chat() {
     return () => {
       newSocket.close();
     };
-  }, []);
+  }, [roomName]);
 
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -44,9 +44,9 @@ function Chat() {
 
   const sendMessage = () => {
     if (socket && message.trim()) {
-      const messageData = { type: 'message', message: { username: user.username, content: message, avatar: user.avatar } };
+      const messageData = { type: 'chat_message', message, user: user.username };
       socket.send(JSON.stringify(messageData));
-      setMessages((prevMessages) => [...prevMessages, messageData.message]);
+      setMessages((prevMessages) => [...prevMessages, messageData]);
       setMessage('');
     }
   };
@@ -74,13 +74,10 @@ function Chat() {
         <h2>Chat</h2>
         <div className={styles.messageContainer}>
           {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={`${styles.message} ${msg.username === user.username ? styles.myMessage : ''}`}
-            >
+            <div key={index} className={`${styles.message} ${msg.user === user.username ? styles.myMessage : ''}`}>
               <img src={msg.avatar || '/default-avatar.png'} alt="Avatar" className={styles.avatar} />
               <div>
-                <strong>{msg.username}</strong>: {msg.content}
+                <strong>{msg.user}</strong>: {msg.message}
               </div>
             </div>
           ))}

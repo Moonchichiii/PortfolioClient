@@ -3,7 +3,6 @@ import http from 'http';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
-import errorHandler from './errorhandler.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import path from 'path';
@@ -55,10 +54,8 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-// Use the error handler middleware
-app.use(errorHandler);
-
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
