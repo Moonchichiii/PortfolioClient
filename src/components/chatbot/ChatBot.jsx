@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import Draggable from 'react-draggable';
+import { polyfill, scrollBehaviourDragImageTranslateOverride } from "mobile-drag-drop";
 import { axiosInstance } from '../../api/ApiConfig';
 import styles from './ChatBot.module.css';
 import chatbotImage from '../../assets/images/chatt.webp';
+
+
+polyfill({
+  dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride
+});
 
 const ChatBot = () => {
   const [message, setMessage] = useState('');
@@ -47,35 +52,33 @@ const ChatBot = () => {
   };
 
   return (
-    <Draggable>
-      <div className={styles.chatbotContainer}>
-        <div className={styles.tooltipContainer} onClick={toggleChat}>
-          <span className={styles.tooltip}>Ask me!</span>
-          <img
-            src={chatbotImage}
-            alt="Chatbot"
-            className={styles.chatbotImage}
-          />
+    <div className={styles.chatbotContainer}>
+      <div className={styles.tooltipContainer} onClick={toggleChat}>
+        <span className={styles.tooltip}>Ask me!</span>
+        <img
+          src={chatbotImage}
+          alt="Chatbot"
+          className={styles.chatbotImage}
+        />
+      </div>
+      <div className={`${styles.chatContainer} ${isOpen ? styles.visible : ''}`}>
+        <div className={styles.chatResponse}>
+          <p>{response}</p>
         </div>
-        <div className={`${styles.chatContainer} ${isOpen ? styles.visible : ''}`}>
-          <div className={styles.chatResponse}>
-            <p>{response}</p>
-          </div>
-          <div className={styles.chatBox}>
-            <input
-              type="text"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Ask anything..."
-              className={styles.chatInput}
-            />
-            <button onClick={handleSendMessage} className={styles.chatButton}>
-              Send
-            </button>
-          </div>
+        <div className={styles.chatBox}>
+          <input
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Ask anything..."
+            className={styles.chatInput}
+          />
+          <button onClick={handleSendMessage} className={styles.chatButton}>
+            Send
+          </button>
         </div>
       </div>
-    </Draggable>
+    </div>
   );
 };
 

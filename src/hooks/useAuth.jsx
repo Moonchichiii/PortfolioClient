@@ -10,8 +10,9 @@ const useAuth = () => {
   const [error, setError] = useState(null);
 
   const saveTokens = (access_token) => {
-    axiosInstance.defaults.headers.common.Authorization = `Bearer ${access_token}`;
+    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
   };
+  
 
   const login = async (identifier, password, onSuccess) => {
     try {

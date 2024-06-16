@@ -4,12 +4,11 @@ self.addEventListener('install', event => {
         return cache.addAll([
           '/',
           '/index.html',
-          '/static/js/bundle.js',
-          '/static/js/0.chunk.js',
-          '/static/js/main.chunk.js',
           '/favicon.ico',
           '/manifest.json',
-          
+          '/assets/index-<hash>.js',
+          '/assets/vendor-<hash>.js',
+          '/assets/index-<hash>.css',
         ]);
       })
     );
