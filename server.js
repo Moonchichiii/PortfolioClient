@@ -16,40 +16,35 @@ const server = http.createServer(app);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Use compression middleware
 app.use(compression());
-
 app.use(cookieParser());
 
-// Enable CORS with options
 app.use(cors({
     origin: process.env.FRONTEND_URL,
     credentials: true,
 }));
 
-// Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Proxy API requests to the Django backend
-const apiProxy = createProxyMiddleware('/api', {
-    target: process.env.REACT_APP_BACKEND_URL,
+const apiProxy = createProxyMiddleware({
+    target: process.env.REACT_APP_BACKEND_URL, 
     changeOrigin: true,
     secure: true,
 });
 
-app.use('/api', apiProxy);
+app.use('/api/', apiProxy); 
 
 // Proxy WebSocket requests to the Django backend
-const wsProxy = createProxyMiddleware('/ws', {
-    target: process.env.VITE_SOCKET_URL,
+const wsProxy = createProxyMiddleware({
+    target: process.env.REACT_APP_WS_URL, 
     ws: true,
     changeOrigin: true,
     secure: true,
 });
 
-app.use('/ws', wsProxy);
+app.use('/ws/', wsProxy); 
 
-// Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
