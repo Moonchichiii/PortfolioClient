@@ -2,6 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../../api/ApiConfig';
 import styles from './ChatBot.module.css';
 import chatbotImage from '../../assets/images/chatt.webp';
+import 'mobile-drag-drop/default.css';
+import { polyfill } from 'mobile-drag-drop';
+
+polyfill();
+
+
 
 const ChatBot = () => {
   const [message, setMessage] = useState('');
@@ -23,7 +29,7 @@ const ChatBot = () => {
 
     fetchCsrfToken();
 
-    // Check for touch support and apply polyfill
+    
     if ('ontouchstart' in window || navigator.maxTouchPoints) {
       import('mobile-drag-drop').then((module) => {
         const { polyfill, scrollBehaviourDragImageTranslateOverride } = module;
