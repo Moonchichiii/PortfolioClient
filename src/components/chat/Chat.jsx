@@ -8,36 +8,40 @@ function Chat({ roomName }) {
   const [message, setMessage] = useState('');
   const [onlineUsers, setOnlineUsers] = useState([]);
   const messageEndRef = useRef(null);
-  const { user } = useSelector((state) => state.auth);
+  const { user, isAuthenticated } = useSelector((state) => state.auth);
 
   useEffect(() => {
+    if (!isAuthenticated) {
+      return;
+    }
+
     const socketUrl = `${process.env.REACT_APP_WS_URL || window.location.origin.replace(/^http/, 'ws')}/ws/livechat/${roomName}/`;
 
     const newSocket = new WebSocket(socketUrl);
 
     newSocket.onopen = () => {
-        console.log('WebSocket connection established');
+      console.log('WebSocket connection established');
     };
 
     newSocket.onmessage = (event) => {
-        const data = JSON.parse(event.data);
-        if (data.type === 'chat_message') {
-            setMessages((prevMessages) => [...prevMessages, { user: data.user, message: data.message }]);
-        } else if (data.type === 'online_users') {
-            setOnlineUsers(Array.isArray(data.users) ? data.users : []);
-        }
+      const data = JSON.parse(event.data);
+      if (data.type === 'chat_message') {
+        setMessages((prevMessages) => [...prevMessages, { user: data.user, message: data.message }]);
+      } else if (data.type === 'online_users') {
+        setOnlineUsers(Array.isArray(data.users) ? data.users : []);
+      }
     };
 
     newSocket.onclose = () => {
-        console.log('WebSocket connection closed');
+      console.log('WebSocket connection closed');
     };
 
     setSocket(newSocket);
 
     return () => {
-        newSocket.close();
+      newSocket.close();
     };
-}, [roomName]);
+  }, [roomName, isAuthenticated]);
 
   useEffect(() => {
     messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -57,6 +61,10 @@ function Chat({ roomName }) {
       sendMessage();
     }
   };
+
+  if (!isAuthenticated) {
+    return <div>Please log in to join the chat.</div>;
+  }
 
   return (
     <div className={styles.chatContainer}>
