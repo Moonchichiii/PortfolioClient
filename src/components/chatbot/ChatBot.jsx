@@ -3,11 +3,11 @@ import { axiosInstance } from '../../api/ApiConfig';
 import styles from './ChatBot.module.css';
 import chatbotImage from '../../assets/images/chatt.webp';
 import 'mobile-drag-drop/default.css';
-import { polyfill } from 'mobile-drag-drop';
+import { polyfill, scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop';
 
-polyfill();
-
-
+polyfill({
+  dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
+});
 
 const ChatBot = () => {
   const [message, setMessage] = useState('');
@@ -28,16 +28,6 @@ const ChatBot = () => {
     };
 
     fetchCsrfToken();
-
-    
-    if ('ontouchstart' in window || navigator.maxTouchPoints) {
-      import('mobile-drag-drop').then((module) => {
-        const { polyfill, scrollBehaviourDragImageTranslateOverride } = module;
-        polyfill({
-          dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
-        });
-      });
-    }
   }, []);
 
   const handleSendMessage = async () => {

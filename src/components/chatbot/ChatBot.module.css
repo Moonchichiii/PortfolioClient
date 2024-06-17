@@ -1,3 +1,16 @@
+:root {
+  --background: rgba(0, 0, 0, 0.85);
+  --tooltip-bg: #333333;
+  --tooltip-color: #e8e8e8;
+  --chat-input-bg: rgba(255, 255, 255, 0.2);
+  --chat-response-bg: rgba(255, 255, 255, 0.1);
+  --button-bg: var(--color-button-base);
+  --button-hover-bg: var(--button-background-color-hover);
+  --button-hover-border: var(--color-button-hover);
+  --button-hover-color: var(--color-button-text-hover);
+  --text-color: var(--color-sea-salt-text);
+}
+
 .chatbotContainer {
   position: fixed;
   bottom: 20px;
@@ -13,7 +26,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background: rgba(0, 0, 0, 0.85);
+  background: var(--background);
   border-radius: 12px;
   padding: 16px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -21,7 +34,7 @@
   width: 90%;
   animation: slideUp 0.5s ease-out;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  z-index: 1999; 
+  z-index: 1999;
 }
 
 .chatContainer.visible {
@@ -49,9 +62,9 @@
 .chatResponse {
   margin-bottom: 12px;
   padding: 12px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--chat-response-bg);
   border-radius: 8px;
-  color: var(--color-sea-salt-text);
+  color: var(--text-color);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   text-align: center;
@@ -70,15 +83,15 @@
   padding: 10px;
   border: none;
   outline: none;
-  background: rgba(255, 255, 255, 0.2);
-  color: var(--color-sea-salt-text);
+  background: var(--chat-input-bg);
+  color: var(--text-color);
   border-radius: 8px;
   margin-bottom: 8px;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .chatInput::placeholder {
-  color: var(--color-sea-salt-text);
+  color: var(--text-color);
 }
 
 .chatBox button {
@@ -87,21 +100,19 @@
   font-size: 1rem;
   border: 0.2px solid transparent;
   border-radius: 4px;
-  background-color: var(--color-button-base);
+  background-color: var(--button-bg);
   color: var(--color-button-text);
   cursor: pointer;
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .chatBox button:hover {
-  background-color: var(--button-background-color-hover);
-  border-color: var(--color-button-hover); 
-  color: var(--color-button-text-hover);
+  background-color: var(--button-hover-bg);
+  border-color: var(--button-hover-border);
+  color: var(--button-hover-color);
 }
 
 .tooltipContainer {
-  --background: #333333;
-  --color: #e8e8e8;
   position: relative;
   cursor: pointer;
   display: inline-block;
@@ -117,12 +128,11 @@
   opacity: 0;
   pointer-events: none;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  background: var(--background);
-  z-index: -1;
+  background: var(--tooltip-bg);
+  color: var(--tooltip-color);
   border-radius: 8px;
   scale: 0;
   transform-origin: 0 0;
-  text-transform: capitalize;
   font-weight: 400;
   font-size: 16px;
   box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
@@ -136,7 +146,7 @@
   bottom: -0.2em;
   left: 50%;
   transform: translate(-50%) rotate(45deg);
-  background: var(--background);
+  background: var(--tooltip-bg);
 }
 
 .tooltipContainer:hover .tooltip {
@@ -155,7 +165,6 @@
   .chatbotContainer {
     bottom: 10px;
     right: 10px;
-    z-index: 2000;
   }
 
   .chatContainer {
@@ -179,4 +188,3 @@
     font-size: 0.875rem;
   }
 }
-
