@@ -28,23 +28,14 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 // Proxy API requests to the Django backend
 const apiProxy = createProxyMiddleware({
-    target: process.env.REACT_APP_BACKEND_URL, 
+    target: process.env.VITE_BASE_URL,
     changeOrigin: true,
     secure: true,
 });
 
 app.use('/api/', apiProxy); 
 
-// Proxy WebSocket requests to the Django backend
-const wsProxy = createProxyMiddleware({
-    target: process.env.REACT_APP_WS_URL, 
-    ws: true,
-    changeOrigin: true,
-    secure: true,
-});
-
-app.use('/ws/', wsProxy); 
-
+// Serve static files
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
