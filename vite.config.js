@@ -24,12 +24,12 @@ export default defineConfig({
           vendor: ['react', 'react-dom', 'react-router-dom']
         }
       }
-    }
+    } 
   },
   server: {
     proxy: {
       '/api': {
-        target: process.env.REACT_APP_BACKEND_URL,
+        target: process.env.VITE_BASE_URL,
         changeOrigin: true,
         secure: true,
       },
