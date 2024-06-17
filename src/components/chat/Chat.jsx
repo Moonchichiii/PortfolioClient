@@ -11,7 +11,8 @@ function Chat({ roomName }) {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const socketUrl = `${process.env.REACT_APP_WS_URL}/ws/chat/${roomName}/`;
+    const socketUrl = `${process.env.REACT_APP_WS_URL || window.location.origin.replace(/^http/, 'ws')}/ws/chat/${roomName}/`;
+
     const newSocket = new WebSocket(socketUrl);
 
     newSocket.onopen = () => {
