@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import axios from 'axios';
 import styles from './chat.module.css';
 
 function Chat({ roomName }) {
-  const [socket, setSocket] = useState(null);
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState('');
   const [onlineUsers, setOnlineUsers] = useState([]);
@@ -15,44 +15,46 @@ function Chat({ roomName }) {
       return;
     }
 
-    const socketUrl = `${process.env.REACT_APP_WS_URL || window.location.origin.replace(/^http/, 'ws')}/ws/livechat/${roomName}/`;
-
-    const newSocket = new WebSocket(socketUrl);
-
-    newSocket.onopen = () => {
-      console.log('WebSocket connection established');
-    };
-
-    newSocket.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      if (data.type === 'chat_message') {
-        setMessages((prevMessages) => [...prevMessages, { user: data.user, message: data.message }]);
-      } else if (data.type === 'online_users') {
-        setOnlineUsers(Array.isArray(data.users) ? data.users : []);
+    // Fetch chat messages
+    const fetchMessages = async () => {
+      try {
+        const response = await axios.get(`/api/livechat/${roomName}/messages/`);
+        setMessages(response.data);
+      } catch (error) {
+        console.error('Error fetching messages:', error);
       }
     };
 
-    newSocket.onclose = () => {
-      console.log('WebSocket connection closed');
+    fetchMessages();
+
+    // Fetch online users
+    const fetchOnlineUsers = async () => {
+      try {
+        const response = await axios.get('/api/livechat/online/');
+        setOnlineUsers(response.data);
+      } catch (error) {
+        console.error('Error fetching online users:', error);
+      }
     };
 
-    setSocket(newSocket);
+    fetchOnlineUsers();
 
-    return () => {
-      newSocket.close();
-    };
+    // Scroll to the end of the messages
+    messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+
   }, [roomName, isAuthenticated]);
 
-  useEffect(() => {
-    messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
-
-  const sendMessage = () => {
-    if (socket && message.trim()) {
-      const messageData = { type: 'chat_message', message, user: user.username };
-      socket.send(JSON.stringify(messageData));
-      setMessages((prevMessages) => [...prevMessages, messageData]);
-      setMessage('');
+  const sendMessage = async () => {
+    if (message.trim()) {
+      const messageData = { content: message, room: roomName };
+      try {
+        const response = await axios.post(`/api/livechat/${roomName}/messages/`, messageData);
+        setMessages((prevMessages) => [...prevMessages, response.data]);
+        setMessage('');
+        messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      } catch (error) {
+        console.error('Error sending message:', error);
+      }
     }
   };
 
@@ -86,7 +88,7 @@ function Chat({ roomName }) {
             <div key={index} className={`${styles.message} ${msg.user === user.username ? styles.myMessage : ''}`}>
               <img src={msg.avatar || '/default-avatar.png'} alt="Avatar" className={styles.avatar} />
               <div>
-                <strong>{msg.user}</strong>: {msg.message}
+                <strong>{msg.user}</strong>: {msg.content}
               </div>
             </div>
           ))}
