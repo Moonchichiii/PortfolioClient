@@ -5,6 +5,7 @@ import AuthModal from './components/authmodal/AuthModal';
 import ProtectedRoute from './routes/ProtectedRoute';
 import ErrorBoundary from './components/common/ErrorBoundary';
 
+
 const LandingPage = React.lazy(() => import('./pages/landingpage/LandingPage'));
 const Dashboard = React.lazy(() => import('./pages/dashboard/DashBoard'));
 const Home = React.lazy(() => import('./pages/home/Home'));
