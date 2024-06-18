@@ -33,7 +33,7 @@ const apiProxy = createProxyMiddleware({
     secure: true,
 });
 
-app.use('/api/', apiProxy); 
+app.use('/api', apiProxy);
 
 // Serve static files
 app.get('*', (req, res) => {

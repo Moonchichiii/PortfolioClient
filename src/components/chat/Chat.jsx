@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import apiClient from './apiClient';  // Import the Axios instance
+import { axiosInstance } from '../../api/ApiConfig'; // Import axiosInstance
 import styles from './chat.module.css';
 
 function Chat({ roomName }) {
@@ -18,7 +18,7 @@ function Chat({ roomName }) {
     // Fetch chat messages
     const fetchMessages = async () => {
       try {
-        const response = await apiClient.get(`/livechat/${roomName}/messages/`);
+        const response = await axiosInstance.get(`/api/livechat/${roomName}/messages/`);
         setMessages(response.data);
       } catch (error) {
         console.error('Error fetching messages:', error);
@@ -30,7 +30,7 @@ function Chat({ roomName }) {
     // Fetch online users
     const fetchOnlineUsers = async () => {
       try {
-        const response = await apiClient.get('/livechat/online/');
+        const response = await axiosInstance.get('/api/livechat/online/');
         setOnlineUsers(response.data);
       } catch (error) {
         console.error('Error fetching online users:', error);
@@ -48,7 +48,7 @@ function Chat({ roomName }) {
     if (message.trim()) {
       const messageData = { content: message, room: roomName };
       try {
-        const response = await apiClient.post(`/livechat/${roomName}/messages/`, messageData);
+        const response = await axiosInstance.post(`/api/livechat/${roomName}/messages/`, messageData);
         setMessages((prevMessages) => [...prevMessages, response.data]);
         setMessage('');
         messageEndRef.current?.scrollIntoView({ behavior: 'smooth' });

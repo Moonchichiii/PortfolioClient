@@ -24,7 +24,7 @@ export default defineConfig({
           vendor: ['react', 'react-dom', 'react-router-dom']
         }
       }
-    } 
+    }
   },
   server: {
     proxy: {

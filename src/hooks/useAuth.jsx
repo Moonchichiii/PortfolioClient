@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setUser, clearUser } from '../pages/auth/authSlice';
-import { axiosInstance } from '../api/ApiConfig';
+import apiClient from '../api/ApiConfig';
 
 const useAuth = () => {
   const dispatch = useDispatch();
@@ -10,12 +10,12 @@ const useAuth = () => {
   const [error, setError] = useState(null);
 
   const saveTokens = (access_token) => {
-    axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
+    apiClient.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
   };
 
   const login = async (identifier, password, onSuccess) => {
     try {
-      const response = await axiosInstance.post('auth/login/', {
+      const response = await apiClient.post('auth/login/', {
         username: identifier,
         password,
       });
@@ -35,7 +35,7 @@ const useAuth = () => {
 
   const register = async (userData, onSuccess) => {
     try {
-      const response = await axiosInstance.post('auth/register/', userData);
+      const response = await apiClient.post('auth/register/', userData);
       const { user, access_token } = response.data;
       dispatch(setUser({ user, token: access_token }));
       saveTokens(access_token);
@@ -52,7 +52,7 @@ const useAuth = () => {
 
   const logout = async () => {
     try {
-      await axiosInstance.post('auth/logout/');
+      await apiClient.post('auth/logout/');
       dispatch(clearUser());
       navigate('/');
     } catch (err) {
