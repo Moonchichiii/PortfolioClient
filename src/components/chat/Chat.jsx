@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { axiosInstance } from '../../api/ApiConfig'; // Import axiosInstance
+import { axiosInstance } from '../../api/ApiConfig';
 import styles from './chat.module.css';
 
 function Chat({ roomName }) {
