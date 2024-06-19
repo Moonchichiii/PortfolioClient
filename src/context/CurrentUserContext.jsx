@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { axiosInstance } from '../../api/ApiConfig';
+import { axiosInstance } from './api/ApiConfig';
 import { clearUser, setUser } from '../pages/auth/authSlice';
 
 const CurrentUserContext = createContext();
