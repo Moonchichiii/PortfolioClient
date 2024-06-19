@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState, useMemo } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import apiClient from '../api/ApiConfig';
+import { axiosInstance } from '../../api/ApiConfig';
 import { clearUser, setUser } from '../pages/auth/authSlice';
 
 const CurrentUserContext = createContext();
@@ -12,7 +12,7 @@ export function CurrentUserProvider({ children }) {
 
   const fetchProfile = async () => {
     try {
-      const response = await apiClient.get('profiles/me/');
+      const response = await axiosInstance.get('profiles/me/');
       setProfile(response.data);
     } catch (error) {
       if (process.env.NODE_ENV !== 'production') {
@@ -30,10 +30,10 @@ export function CurrentUserProvider({ children }) {
 
       if (refresh_token) {
         try {
-          const response = await apiClient.post('auth/token/refresh/', {
+          const response = await axiosInstance.post('auth/token/refresh/', {
             refresh: refresh_token,
           });
-          apiClient.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
+          axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
           dispatch(setUser({ user: response.data.user, token: response.data.access }));
         } catch (refreshError) {
           console.error('Token refresh failed:', refreshError);
@@ -42,7 +42,7 @@ export function CurrentUserProvider({ children }) {
       }
     } else {
       try {
-        await apiClient.post('auth/token/verify/', { token });
+        await axiosInstance.post('auth/token/verify/', { token });
       } catch (error) {
         if (error.response && error.response.status === 401) {
           const refresh_token = document.cookie
@@ -50,8 +50,8 @@ export function CurrentUserProvider({ children }) {
             .find((row) => row.startsWith('jwt_refresh_token'))
             ?.split('=')[1];
           try {
-            const response = await apiClient.post('auth/token/refresh/', { refresh: refresh_token });
-            apiClient.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
+            const response = await axiosInstance.post('auth/token/refresh/', { refresh: refresh_token });
+            axiosInstance.defaults.headers.common['Authorization'] = `Bearer ${response.data.access}`;
             dispatch(setUser({ user: response.data.user, token: response.data.access }));
           } catch (refreshError) {
             console.error('Token refresh failed:', refreshError);
