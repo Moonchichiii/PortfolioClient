@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setUser, clearUser } from '../pages/auth/authSlice';
-import { axiosInstance } from './api/ApiConfig';
+import { axiosInstance } from '../api/ApiConfig';
 
 const useAuth = () => {
   const dispatch = useDispatch();
