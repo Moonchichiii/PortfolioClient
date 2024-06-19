@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoadingSpinner from './components/loadingspinner/LoadingSpinner';
 import AuthModal from './components/authmodal/AuthModal';
 import ProtectedRoute from './routes/ProtectedRoute';
-import errorBoundary from './components/common/Error';
+import errorBoundary from './components/commons/ErrorBoundary';
 
 
 const LandingPage = React.lazy(() => import('./pages/landingpage/LandingPage'));

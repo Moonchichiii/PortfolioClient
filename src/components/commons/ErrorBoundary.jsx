@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
-import styles from './error.module.css';
+import styles from './errorboundry.module.css';
 
 class ErrorBoundary extends Component {
   constructor(props) {
