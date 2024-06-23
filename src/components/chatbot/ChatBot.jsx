@@ -2,12 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { axiosInstance } from '../../api/ApiConfig';
 import styles from './ChatBot.module.css';
 import chatbotImage from '../../assets/images/chatt.webp';
-import 'mobile-drag-drop/default.css';
-import { polyfill, scrollBehaviourDragImageTranslateOverride } from 'mobile-drag-drop';
-
-polyfill({
-  dragImageTranslateOverride: scrollBehaviourDragImageTranslateOverride,
-});
 
 const ChatBot = () => {
   const [message, setMessage] = useState('');

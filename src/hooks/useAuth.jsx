@@ -19,8 +19,8 @@ const useAuth = () => {
         username: identifier,
         password,
       });
-      const { user, access_token } = response.data;
-      dispatch(setUser({ user, token: access_token }));
+      const { user, profile, access_token, refresh_token } = response.data;
+      dispatch(setUser({ user, profile, accessToken: access_token, refreshToken: refresh_token }));
       saveTokens(access_token);
       setError(null);
       if (onSuccess) onSuccess();
@@ -36,8 +36,8 @@ const useAuth = () => {
   const register = async (userData, onSuccess) => {
     try {
       const response = await axiosInstance.post('auth/register/', userData);
-      const { user, access_token } = response.data;
-      dispatch(setUser({ user, token: access_token }));
+      const { user, profile, access_token, refresh_token } = response.data;
+      dispatch(setUser({ user, profile, accessToken: access_token, refreshToken: refresh_token }));
       saveTokens(access_token);
       setError(null);
       if (onSuccess) onSuccess();

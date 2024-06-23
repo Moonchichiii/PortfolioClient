@@ -57,7 +57,7 @@ function Settings() {
       form.append('password', formData.newPassword);
     }
     try {
-      const response = await axiosMultipart.put('profiles/me/', form);
+      const response = await axiosMultipart.put(`profiles/${user.id}/`, form);
       dispatch(setUser(response.data));
     } catch (error) {
       if (error.response && error.response.data) {

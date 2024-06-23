@@ -3,15 +3,13 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LoadingSpinner from './components/loadingspinner/LoadingSpinner';
 import AuthModal from './components/authmodal/AuthModal';
 import ProtectedRoute from './routes/ProtectedRoute';
-import errorBoundary from './components/commons/ErrorBoundary';
-
+import ErrorBoundaryWithNavigate from './components/commons/ErrorBoundary';
 
 const LandingPage = React.lazy(() => import('./pages/landingpage/LandingPage'));
 const Dashboard = React.lazy(() => import('./pages/dashboard/DashBoard'));
 const Home = React.lazy(() => import('./pages/home/Home'));
 const About = React.lazy(() => import('./pages/about/About'));
 const Portfolio = React.lazy(() => import('./pages/port/Port'));
-
 
 function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
@@ -33,42 +31,42 @@ function App() {
           <Route
             path="/"
             element={
-              <ErrorBoundary>
+              <ErrorBoundaryWithNavigate>
                 <LandingPage onAuthClick={handleShowAuthModal} />
-              </ErrorBoundary>
+              </ErrorBoundaryWithNavigate>
             }
           />
           <Route
             path="/home"
             element={
-              <ErrorBoundary>
+              <ErrorBoundaryWithNavigate>
                 <Home />
-              </ErrorBoundary>
+              </ErrorBoundaryWithNavigate>
             }
           />
           <Route
             path="/about"
             element={
-              <ErrorBoundary>
+              <ErrorBoundaryWithNavigate>
                 <About />
-              </ErrorBoundary>
+              </ErrorBoundaryWithNavigate>
             }
           />
           <Route
             path="/portfolio"
             element={
-              <ErrorBoundary>
+              <ErrorBoundaryWithNavigate>
                 <Portfolio />
-              </ErrorBoundary>
+              </ErrorBoundaryWithNavigate>
             }
           />
           <Route
             path="/dashboard/*"
             element={
               <ProtectedRoute>
-                <ErrorBoundary>
+                <ErrorBoundaryWithNavigate>
                   <Dashboard />
-                </ErrorBoundary>
+                </ErrorBoundaryWithNavigate>
               </ProtectedRoute>
             }
           />
